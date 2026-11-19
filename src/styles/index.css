@@ -1,0 +1,194 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-gold-primary: #D4AF37;
+  --color-gold-light: #F7E2B5;
+  --color-gold-dark: #A48028;
+  --color-gold-muted: #D1B474;
+  --color-bg-light: #3D0814;
+  --color-bg-card: rgba(52, 8, 18, 0.88);
+  --color-text-dark: #FFFDF9;
+  --color-text-muted: #EAD2B2;
+  --color-border-subtle: rgba(212, 175, 55, 0.25);
+  --color-border-gold: #D4AF37;
+  
+  --font-cinzel: "Cinzel Decorative", Georgia, serif;
+  --font-cormorant: "Cormorant Garamond", Georgia, serif;
+  --font-garamond: "EB Garamond", serif;
+  --font-arizonia: "Arizonia", cursive;
+  --font-hindi: "Noto Serif Devanagari", serif;
+  --font-tamil: "Noto Serif Tamil", serif;
+  --font-body: "Inter", -apple-system, sans-serif;
+}
+
+/* Base resets & typography */
+html {
+  scroll-behavior: smooth;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  background-color: var(--color-bg-light);
+  color: var(--color-text-dark);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+body.overflow-hidden-envelope {
+  overflow: hidden !important;
+  touch-action: none;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+}
+::-webkit-scrollbar-track {
+  background: #24040B;
+}
+::-webkit-scrollbar-thumb {
+  background: #D4AF37;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #F7E2B5;
+}
+
+/* Gold foil text gradient effect */
+.text-gold-gradient {
+  background: linear-gradient(135deg, #FBF2DE 0%, #D4AF37 35%, #F7E2B5 50%, #C29A38 65%, #F0D394 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gold-subtle {
+  color: #E5C583;
+}
+
+/* Luxury Tamil Wedding Ornate Border */
+.ornate-border-box {
+  position: relative;
+  border: 1px solid rgba(194, 167, 115, 0.4);
+  background: #FFFFFF;
+}
+
+.ornate-border-box::before {
+  content: '';
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  right: 4px;
+  bottom: 4px;
+  border: 1px solid rgba(194, 167, 115, 0.2);
+  pointer-events: none;
+}
+
+/* Cinematic film grain noise overlay */
+.cinematic-grain {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.035'/%3E%3C/svg%3E");
+}
+
+/* Cinematic Vignette Overlay */
+.cinematic-vignette {
+  background: radial-gradient(circle at center, transparent 40%, rgba(20, 15, 10, 0.4) 100%);
+}
+
+.cinematic-vignette-heavy {
+  background: radial-gradient(circle at center, transparent 30%, rgba(15, 10, 5, 0.75) 100%);
+}
+
+/* Oonjal Traditional Swing Animation */
+@keyframes oonjalGentleSwing {
+  0% {
+    transform: rotateZ(-1.2deg);
+  }
+  50% {
+    transform: rotateZ(0deg);
+  }
+  100% {
+    transform: rotateZ(1.2deg);
+  }
+}
+
+.oonjal-swing-container {
+  transform-origin: top center;
+  animation: oonjalGentleSwing 6.5s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+/* Subtle Floating/Breathing Animation */
+@keyframes slowBreathe {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+}
+
+.animate-slow-breathe {
+  animation: slowBreathe 8s ease-in-out infinite;
+}
+
+/* Card hover micro-animations */
+.wedding-card {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease;
+}
+
+.wedding-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 36px -10px rgba(0, 0, 0, 0.55), 0 0 24px rgba(212, 175, 55, 0.25);
+  border-color: rgba(212, 175, 55, 0.65);
+}
+
+/* Glassmorphism utility */
+.glass-panel {
+  background: rgba(54, 8, 18, 0.78);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  color: #FFFDF9;
+}
+
+.glass-panel-dark {
+  background: rgba(28, 4, 10, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  color: #FFFDF9;
+}
+
+.glass-panel-light {
+  background: rgba(255, 253, 248, 0.94);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  color: #2D0812;
+}
+
+/* Desktop custom cursor styles */
+@media (hover: hover) and (pointer: fine) {
+  .custom-cursor-pointer {
+    cursor: none !important;
+  }
+}
+
+/* Respect user's motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .oonjal-swing-container {
+    animation: none !important;
+  }
+}
