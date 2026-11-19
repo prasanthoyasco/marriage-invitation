@@ -83,7 +83,7 @@ export const AudioController: React.FC<AudioControllerProps> = ({ autoPlayTrigge
         {isPlaying && (
           <div className="hidden sm:flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#25040B]/90 backdrop-blur-md border border-[#D4AF37]/50 text-[#F7E2B5] text-xs font-serif shadow-xl animate-fade-in font-tamil">
             <Music className="w-3.5 h-3.5 text-[#D4AF37] animate-bounce" />
-            <span>{weddingConfig.audio.title.split(" ",2)}</span>
+            <span>{weddingConfig.audio.title}</span>
           </div>
         )}
 
