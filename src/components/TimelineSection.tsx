@@ -21,15 +21,25 @@ export const TimelineSection: React.FC = () => {
           transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
           className="text-center mb-16 sm:mb-24"
         >
-          <span className="font-tamil text-base sm:text-lg text-[#F7E2B5] font-semibold block mb-2">
-            புனிதச் சடங்குகள் & கொண்டாட்டங்கள்
-          </span>
+          <div className="mb-3 flex flex-col items-center">
+            <span className="font-tamil text-base sm:text-lg text-[#7A3E10] font-semibold block">
+              புனிதச் சடங்குகள் & கொண்டாட்டங்கள்
+            </span>
+            <span className="font-cormorant text-xs sm:text-sm text-[#8C4A15] font-bold uppercase tracking-widest mt-0.5 block">
+              Sacred Rituals & Celebrations
+            </span>
+          </div>
 
-          <h2 className="font-cinzel text-3xl sm:text-5xl text-[#FFFDF9] font-semibold tracking-wide uppercase drop-shadow-md">
-            சுப முகூர்த்த நிகழ்வுகள்
-          </h2>
+          <div className="flex flex-col items-center">
+            <h2 className="font-cinzel text-3xl sm:text-5xl text-[#381F0D] font-bold tracking-wide uppercase drop-shadow-sm">
+              சுப முகூர்த்த நிகழ்வுகள்
+            </h2>
+            <span className="font-cormorant text-xs sm:text-sm text-[#8C4A15] tracking-[0.25em] uppercase font-bold mt-1">
+              Auspicious Ceremonies
+            </span>
+          </div>
 
-          <p className="font-tamil text-sm sm:text-base text-[#D4AF37] mt-3 tracking-widest font-bold">
+          <p className="font-tamil text-sm sm:text-base text-[#7A3E10] mt-3 tracking-widest font-bold">
             வரவேற்பு விழா & புனிதத் திருமாங்கல்ய தாரணம்
           </p>
 

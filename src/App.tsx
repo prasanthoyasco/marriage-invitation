@@ -23,14 +23,16 @@ export function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#24040B] text-[#FFFDF9] selection:bg-[#D4AF37]/35 selection:text-[#FFF8E7] relative overflow-x-hidden">
-      {/* Fixed Full-Site Crimson Royal Background Texture */}
+    <div className="min-h-screen bg-[#FAF4E6] text-[#381F0D] selection:bg-[#B8860B]/35 selection:text-[#381F0D] relative overflow-x-hidden">
+      {/* Fixed Full-Site Warm Sandalwood / Antique Parchment Background Texture */}
       <div
-        className="fixed inset-0 pointer-events-none -z-10 bg-cover bg-center bg-no-repeat opacity-95"
-        style={{ backgroundImage: `url('/assets/images/backgroundimage.png')` }}
+        className="fixed inset-0 pointer-events-none -z-10 opacity-60"
+        style={{
+          backgroundImage: `radial-gradient(circle at center, #FDF9EE 0%, #F6ECDB 65%, #EAD6B4 100%)`,
+        }}
       />
-      {/* Subtle Cinematic Vignette & Atmospheric Depth */}
-      <div className="fixed inset-0 pointer-events-none -z-10 bg-radial-gradient from-transparent via-[#2D060F]/35 to-[#160207]/80" />
+      {/* Subtle Warm Amber Vignette & Atmospheric Depth */}
+      <div className="fixed inset-0 pointer-events-none -z-10 bg-radial-gradient from-transparent via-[#8C4A15]/5 to-[#5C2D0C]/15" />
 
       {/* Desktop Luxury Magnetic Custom Cursor */}
       <CustomCursor />

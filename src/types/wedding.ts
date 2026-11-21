@@ -3,6 +3,8 @@ export interface CouplePerson {
   name: string;
   fullName: string;
   tamilName?: string;
+  labelTamil?: string;
+  nameTransliteration?: string;
   role: 'Groom' | 'Bride';
   parents: {
     father: string;
@@ -138,6 +140,7 @@ export interface WeddingConfig {
     bride: CouplePerson;
     title: string;
     tamilTitle?: string;
+    monogram?: string;
     subtitle: string;
     heroImage: string;
     portraitImage: string;

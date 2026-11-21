@@ -41,12 +41,12 @@ export const EventCard: React.FC<EventCardProps> = ({ event, index }) => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-60px' }}
       transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-      className={`relative rounded-3xl overflow-hidden border transition-all duration-500 shadow-2xl ${
+      className={`relative rounded-3xl overflow-hidden border transition-all duration-500 shadow-[0_15px_45px_rgba(74,36,10,0.12)] ${
         isMuhurtham
-          ? 'bg-gradient-to-b from-[#2F040E]/95 via-[#3B0714]/95 to-[#24030B]/98 border-[#D4AF37] ring-2 ring-[#D4AF37]/35'
+          ? 'bg-[#FFFDF8]/98 border-2 border-[#C68A4C] ring-2 ring-[#C68A4C]/30 text-[#381F0D]'
           : isReception
-          ? 'bg-gradient-to-b from-[#22040B]/95 via-[#1A0308]/95 to-[#130205]/98 text-[#FAF9F7] border-[#E5C583]/50'
-          : 'bg-[#25040B]/90 backdrop-blur-md border border-[#D4AF37]/45 text-[#FFFDF9]'
+          ? 'bg-[#FFFDF8]/98 border-2 border-[#B8860B]/70 text-[#381F0D]'
+          : 'bg-[#FFFDF8]/95 backdrop-blur-md border border-[#C68A4C]/60 text-[#381F0D]'
       }`}
     >
       {/* Muhurtham Sacred Golden Glow */}
@@ -103,9 +103,9 @@ export const EventCard: React.FC<EventCardProps> = ({ event, index }) => {
 
               {/* Top Video Tag */}
               <div className="absolute top-3 left-3 flex items-center gap-2 pointer-events-none">
-                <div className="px-3.5 py-1.5 rounded-full bg-[#180206]/85 backdrop-blur-md border border-[#D4AF37] flex items-center gap-1.5 shadow-lg">
-                  <Film className="w-3.5 h-3.5 text-[#D4AF37]" />
-                  <span className="text-xs font-tamil font-bold tracking-wider text-[#FFF8E7]">
+                <div className="px-3.5 py-1.5 rounded-full bg-[#FFFDF8]/90 backdrop-blur-md border border-[#C68A4C] flex items-center gap-1.5 shadow-lg">
+                  <Film className="w-3.5 h-3.5 text-[#8C4A15]" />
+                  <span className="text-xs font-tamil font-bold tracking-wider text-[#381F0D]">
                     {event.videoDurationText || "வீடியோ பதிவு"}
                   </span>
                 </div>
@@ -139,9 +139,9 @@ export const EventCard: React.FC<EventCardProps> = ({ event, index }) => {
 
           {/* Muhurtham Sacred Badge */}
           {isMuhurtham && (
-            <div className="absolute top-3 right-3 pointer-events-none px-3.5 py-1.5 bg-[#4A0E17]/90 backdrop-blur-md rounded-full border border-[#D4AF37] shadow-lg flex items-center gap-1.5">
-              <Sparkles className="w-3.5 h-3.5 text-[#D4AF37] animate-spin" style={{ animationDuration: '6s' }} />
-              <span className="text-xs font-tamil font-bold tracking-widest text-[#FFF8E7]">
+            <div className="absolute top-3 right-3 pointer-events-none px-3.5 py-1.5 bg-[#FAF0DC]/95 backdrop-blur-md rounded-full border border-[#C68A4C] shadow-lg flex items-center gap-1.5">
+              <Sparkles className="w-3.5 h-3.5 text-[#8C4A15] animate-spin" style={{ animationDuration: '6s' }} />
+              <span className="text-xs font-tamil font-bold tracking-widest text-[#5C2D0C]">
                 மாங்கல்ய தாரணம் • கெட்டிமேளம்
               </span>
             </div>
@@ -156,62 +156,65 @@ export const EventCard: React.FC<EventCardProps> = ({ event, index }) => {
         >
           <div>
             {/* Chapter Tag */}
-            <div className="flex items-center gap-2 mb-2">
-              <span className="text-xs uppercase tracking-[0.2em] font-tamil font-semibold text-[#D4AF37]">
-                நிகழ்வு 0{index + 1} • {event.subtitle}
+            <div className="flex flex-col mb-2 leading-tight">
+              <span className="text-xs uppercase tracking-[0.2em] font-tamil font-bold text-[#8C4A15]">
+                நிகழ்வு 0{index + 1}
+              </span>
+              <span className="text-[11px] uppercase tracking-[0.2em] font-cormorant font-bold text-[#7A3E10] mt-0.5">
+                {event.subtitle}
               </span>
             </div>
 
             {/* Event Main Title (Tamil) */}
-            <h3 className="font-cinzel text-2xl sm:text-3xl lg:text-4xl font-semibold mb-2 tracking-wide text-[#FFFDF9] drop-shadow-sm">
+            <h3 className="font-cinzel text-2xl sm:text-3xl lg:text-4xl font-bold mb-2 tracking-wide text-[#381F0D] drop-shadow-sm">
               {event.tamilTitle || event.title}
             </h3>
 
             {/* Sacred Mantra / Ritual Quote */}
             {isMuhurtham && (
-              <p className="font-tamil text-sm text-[#F7E2B5] mb-3 font-semibold">
+              <p className="font-tamil text-sm text-[#7A2508] mb-3 font-semibold">
                 "மாங்கல்யம் தந்துனானேன மம ஜீவன ஹேதுனா • கண்டே பத்னாமி சுபகே சஞ்சீவ சரதசதம்"
               </p>
             )}
 
             {isReception && (
-              <p className="font-tamil text-sm text-[#F7E2B5] mb-3 font-medium">
+              <p className="font-tamil text-sm text-[#7A2508] mb-3 font-medium">
                 "இன்னிசை முழங்க, இருமனம் மகிழ நடைபெறும் ஆனந்த வரவேற்பு விழா"
               </p>
             )}
 
             {/* Date & Time Badges in Tamil */}
             <div className="flex flex-col sm:flex-row flex-wrap gap-2.5 my-4">
-              <div className="flex items-center gap-2 px-4 py-2 rounded-full text-xs sm:text-sm font-medium border bg-[#180206]/85 border-[#D4AF37]/50 text-[#F5E6C8]">
-                <Calendar className="w-4 h-4 text-[#D4AF37]" />
-                <span className="font-tamil">{event.date}</span>
+              <div className="flex items-center gap-2 px-4 py-2 rounded-full text-xs sm:text-sm font-medium border bg-[#FAF0DC] border-[#C68A4C]/50 text-[#5C2D0C]">
+                <Calendar className="w-4 h-4 text-[#8C4A15]" />
+                <span className="font-tamil font-semibold">{event.date}</span>
               </div>
-              <div className="flex items-center gap-2 px-4 py-2 rounded-full text-xs sm:text-sm font-medium border bg-[#180206]/85 border-[#D4AF37]/50 text-[#F5E6C8]">
-                <Clock className="w-4 h-4 text-[#D4AF37]" />
-                <span className="font-tamil">{event.time}</span>
+              <div className="flex items-center gap-2 px-4 py-2 rounded-full text-xs sm:text-sm font-medium border bg-[#FAF0DC] border-[#C68A4C]/50 text-[#5C2D0C]">
+                <Clock className="w-4 h-4 text-[#8C4A15]" />
+                <span className="font-tamil font-semibold">{event.time}</span>
               </div>
             </div>
 
             {/* Secondary Time (e.g. DJ Party / Muhurtham Thaali Time) */}
             {event.secondaryTime && (
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-xl border bg-[#D4AF37]/15 border-[#D4AF37]/60 text-[#F7E2B5] text-xs sm:text-sm font-tamil font-semibold mb-4">
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-xl border bg-[#FAF0DC] border-[#C68A4C]/60 text-[#7A3E10] text-xs sm:text-sm font-tamil font-bold mb-4">
                 <span>{event.secondaryTime}</span>
               </div>
             )}
 
             {/* Description */}
-            <p className="font-tamil text-sm sm:text-base mb-6 leading-relaxed text-[#F0DCBA]">
+            <p className="font-tamil text-sm sm:text-base mb-6 leading-relaxed text-[#5C3B24] font-medium">
               {event.tamilDescription || event.description}
             </p>
 
             {/* Venue & Address */}
-            <div className="pt-4 border-t border-[#D4AF37]/30 flex items-start gap-3 text-[#FFFDF9]">
-              <MapPin className="w-4 h-4 text-[#D4AF37] flex-shrink-0 mt-1" />
+            <div className="pt-4 border-t border-[#C68A4C]/30 flex items-start gap-3 text-[#381F0D]">
+              <MapPin className="w-4 h-4 text-[#8C4A15] flex-shrink-0 mt-1" />
               <div>
-                <p className="font-semibold text-sm sm:text-base font-tamil tracking-wide text-[#FFFDF9]">
+                <p className="font-bold text-sm sm:text-base font-tamil tracking-wide text-[#381F0D]">
                   {event.venueName}
                 </p>
-                <p className="text-xs sm:text-sm font-tamil leading-relaxed mt-0.5 text-[#D1B99F]">
+                <p className="text-xs sm:text-sm font-tamil leading-relaxed mt-0.5 text-[#5C3B24]">
                   {event.address}
                 </p>
               </div>
@@ -224,10 +227,15 @@ export const EventCard: React.FC<EventCardProps> = ({ event, index }) => {
               href={event.mapsUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2.5 px-6 py-3 rounded-xl border border-[#D4AF37] bg-gradient-to-r from-[#D4AF37] to-[#B8922E] hover:brightness-110 text-[#1E0308] text-xs sm:text-sm font-bold tracking-wider uppercase transition-all duration-300 shadow-xl group font-tamil"
+              className="inline-flex items-center gap-2.5 px-6 py-3 rounded-xl border border-[#C68A4C] bg-gradient-to-r from-[#8C4A15] via-[#A85D1E] to-[#7A3E10] hover:brightness-105 text-[#FFFDF8] text-xs sm:text-sm font-bold tracking-wider uppercase transition-all duration-300 shadow-lg group font-tamil"
             >
-              <Navigation className="w-4 h-4 transition-transform group-hover:translate-x-0.5 text-[#1E0308]" />
-              <span>வழித்தடம் காண்க (Google Maps)</span>
+              <Navigation className="w-4 h-4 transition-transform group-hover:translate-x-0.5 text-[#FFFDF8]" />
+              <div className="flex flex-col items-center leading-tight">
+                <span>வழித்தடம் காண்க</span>
+                <span className="font-cormorant text-[11px] uppercase tracking-wider text-[#FAF0DC] font-bold">
+                  Google Maps
+                </span>
+              </div>
             </a>
           </div>
         </div>

@@ -28,16 +28,21 @@ export const CountdownSection: React.FC = () => {
           transition={{ duration: 0.8 }}
           className="mb-12 sm:mb-16"
         >
-          <span className="font-tamil text-base sm:text-lg text-[#F7E2B5] font-semibold block mb-2">
-            சுபமுகூர்த்த கவுண்டவுன் • Auspicious Countdown
-          </span>
-          <h2 className="font-cinzel text-2xl sm:text-4xl md:text-5xl text-[#FFFDF9] font-semibold tracking-wider drop-shadow-md">
+          <div className="mb-2 flex flex-col items-center">
+            <span className="font-tamil text-base sm:text-lg text-[#7A3E10] font-semibold block">
+              சுபமுகூர்த்த கவுண்டவுன்
+            </span>
+            <span className="font-cormorant text-xs sm:text-sm text-[#8C4A15] font-bold uppercase tracking-widest mt-0.5 block">
+              Auspicious Countdown
+            </span>
+          </div>
+          <h2 className="font-cinzel text-2xl sm:text-4xl md:text-5xl text-[#381F0D] font-bold tracking-wider drop-shadow-sm">
             இணைந்திடும் சுபமுகூர்த்த நன்னாளை நோக்கி
           </h2>
           <div className="flex items-center justify-center gap-3 w-32 mx-auto mt-4 opacity-70">
-            <div className="h-[1px] flex-1 bg-[#D4AF37]" />
-            <span className="text-[#D4AF37] text-xs">❖</span>
-            <div className="h-[1px] flex-1 bg-[#D4AF37]" />
+            <div className="h-[1px] flex-1 bg-[#C68A4C]" />
+            <span className="text-[#8C4A15] text-xs">❖</span>
+            <div className="h-[1px] flex-1 bg-[#C68A4C]" />
           </div>
         </motion.div>
 
@@ -50,22 +55,22 @@ export const CountdownSection: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1, duration: 0.7 }}
-              className="relative p-6 sm:p-8 rounded-2xl bg-[#25040B]/85 backdrop-blur-md border border-[#D4AF37]/50 shadow-2xl flex flex-col items-center justify-center wedding-card group"
+              className="relative p-6 sm:p-8 rounded-2xl bg-[#FFFDF8]/95 backdrop-blur-md border border-[#C68A4C]/50 shadow-[0_10px_30px_rgba(74,36,10,0.08)] flex flex-col items-center justify-center wedding-card group"
             >
               {/* Dual Gold Hairline Accent */}
-              <div className="absolute top-2 left-4 right-4 h-[1px] bg-gradient-to-r from-transparent via-[#D4AF37]/60 to-transparent" />
-              <div className="absolute bottom-2 left-4 right-4 h-[1px] bg-gradient-to-r from-transparent via-[#D4AF37]/60 to-transparent" />
+              <div className="absolute top-2 left-4 right-4 h-[1px] bg-gradient-to-r from-transparent via-[#C68A4C]/60 to-transparent" />
+              <div className="absolute bottom-2 left-4 right-4 h-[1px] bg-gradient-to-r from-transparent via-[#C68A4C]/60 to-transparent" />
 
               {/* Large Editorial Number */}
-              <div className="font-cinzel text-4xl sm:text-5xl md:text-6xl font-bold text-[#F7E2B5] group-hover:text-[#FFFDF9] transition-colors duration-300 tracking-tight drop-shadow-sm">
+              <div className="font-cinzel text-4xl sm:text-5xl md:text-6xl font-bold text-[#8C4A15] group-hover:text-[#5C2D0C] transition-colors duration-300 tracking-tight drop-shadow-sm">
                 {unit.value}
               </div>
 
               {/* Tamil Label */}
-              <span className="text-sm sm:text-base font-tamil uppercase font-bold text-[#D4AF37] mt-2">
+              <span className="text-sm sm:text-base font-tamil uppercase font-bold text-[#5C2D0C] mt-2">
                 {unit.label}
               </span>
-              <span className="text-[10px] font-mono tracking-widest text-[#E5D0B2]/60 uppercase">
+              <span className="text-[10px] font-mono tracking-widest text-[#8C6B52] uppercase font-medium">
                 {unit.subLabel}
               </span>
             </motion.div>
@@ -78,7 +83,7 @@ export const CountdownSection: React.FC = () => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.5, duration: 0.8 }}
-          className="mt-10 font-tamil text-base sm:text-lg text-[#F5DEB3]"
+          className="mt-10 font-tamil text-base sm:text-lg text-[#5C3B24] font-medium"
         >
           {weddingConfig.dates.displayTamilDate || weddingConfig.dates.displayWeddingDate} அன்று நடைபெறும் சுபமுகூர்த்த நன்னாளை எதிர்நோக்கி...
         </motion.p>

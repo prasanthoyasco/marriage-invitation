@@ -14,33 +14,43 @@ export const ContactAjaySection: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="bg-gradient-to-b from-[#27040B]/90 to-[#180206]/95 backdrop-blur-md p-8 sm:p-10 rounded-3xl border border-[#D4AF37]/50 shadow-2xl text-center relative overflow-hidden"
+          className="bg-[#FFFDF8]/95 backdrop-blur-md p-8 sm:p-10 rounded-3xl border-2 border-[#C68A4C]/60 shadow-[0_15px_45px_rgba(74,36,10,0.12)] text-center relative overflow-hidden"
         >
           {/* Avatar / Coordinator Icon */}
-          <div className="w-16 h-16 rounded-full bg-[#D4AF37]/20 border border-[#D4AF37] text-[#F7E2B5] flex items-center justify-center mx-auto mb-4 shadow-lg">
-            <UserCheck className="w-8 h-8 text-[#D4AF37]" />
+          <div className="w-16 h-16 rounded-full bg-[#FAF0DC] border border-[#C68A4C] text-[#8C4A15] flex items-center justify-center mx-auto mb-4 shadow-md">
+            <UserCheck className="w-8 h-8 text-[#8C4A15]" />
           </div>
 
-          <span className="font-tamil text-xs uppercase tracking-widest text-[#D4AF37] font-semibold block mb-1">
-            தொடர்புக்கு • Contact
-          </span>
+          <div className="mb-2 flex flex-col items-center">
+            <span className="font-tamil text-xs uppercase tracking-widest text-[#8C4A15] font-bold block">
+              தொடர்புக்கு
+            </span>
+            <span className="font-cormorant text-[11px] uppercase tracking-[0.25em] text-[#7A3E10] font-bold block">
+              Contact
+            </span>
+          </div>
 
-          <h3 className="font-cinzel text-2xl sm:text-3xl text-[#FFFDF9] font-bold mb-1">
-            {contactAjay.tamilName} ({contactAjay.name})
+          <h3 className="font-cinzel text-2xl sm:text-3xl text-[#381F0D] font-bold mb-1">
+            {contactAjay.tamilName}
           </h3>
 
-          <p className="font-tamil text-xs sm:text-sm text-[#E8D1A7]/90 mb-6">
-            {contactAjay.role}
-          </p>
+          <div className="mb-6 flex flex-col items-center leading-tight">
+            <span className="font-tamil text-xs sm:text-sm text-[#5C3B24] font-medium">
+              திருமண ஒருங்கிணைப்பாளர்
+            </span>
+            <span className="font-cormorant text-xs text-[#8C4A15] font-bold tracking-wider mt-0.5">
+              Contact Coordinator
+            </span>
+          </div>
 
           {/* Quick Action Buttons */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
             {/* Call Button */}
             <a
               href={`tel:${contactAjay.phone}`}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl bg-gradient-to-r from-[#D4AF37] to-[#B38D28] hover:from-[#E5C365] hover:to-[#D4AF37] text-[#1E0308] font-bold text-sm uppercase tracking-wider transition-all duration-300 shadow-xl transform hover:-translate-y-0.5 group"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl bg-gradient-to-r from-[#8C4A15] via-[#A85D1E] to-[#7A3E10] hover:brightness-105 text-[#FFFDF8] font-bold text-sm uppercase tracking-wider transition-all duration-300 shadow-lg transform hover:-translate-y-0.5 group"
             >
-              <Phone className="w-4 h-4 text-[#1E0308] group-hover:rotate-12 transition-transform" />
+              <Phone className="w-4 h-4 text-[#FFFDF8] group-hover:rotate-12 transition-transform" />
               <span>அழைக்க: {contactAjay.displayPhone}</span>
             </a>
 
@@ -49,7 +59,7 @@ export const ContactAjaySection: React.FC = () => {
               href={`https://wa.me/${contactAjay.whatsappNumber}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl border border-[#25D366] bg-[#25D366]/20 hover:bg-[#25D366]/30 text-[#FFFDF9] font-bold text-sm uppercase tracking-wider transition-all duration-300 shadow-xl transform hover:-translate-y-0.5"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl border border-[#25D366] bg-[#25D366]/15 hover:bg-[#25D366]/25 text-[#1b6b33] font-bold text-sm uppercase tracking-wider transition-all duration-300 shadow-md transform hover:-translate-y-0.5"
             >
               <MessageCircle className="w-4 h-4 text-[#25D366]" />
               <span>வாட்ஸ்அப் செய்ய</span>
@@ -57,14 +67,14 @@ export const ContactAjaySection: React.FC = () => {
           </div>
 
           {contactAjay.note && (
-            <p className="font-tamil text-xs text-[#E5D0B2]/75 max-w-md mx-auto leading-relaxed">
+            <p className="font-tamil text-xs text-[#5C3B24] max-w-md mx-auto leading-relaxed font-medium">
               {contactAjay.note}
             </p>
           )}
 
           {/* Golden Corner Accents */}
-          <div className="absolute top-2.5 left-2.5 text-[#D4AF37]/30 text-xs">✦</div>
-          <div className="absolute top-2.5 right-2.5 text-[#D4AF37]/30 text-xs">✦</div>
+          <div className="absolute top-2.5 left-2.5 text-[#C68A4C]/50 text-xs">✦</div>
+          <div className="absolute top-2.5 right-2.5 text-[#C68A4C]/50 text-xs">✦</div>
         </motion.div>
       </div>
     </section>

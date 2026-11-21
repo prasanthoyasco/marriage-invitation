@@ -86,19 +86,21 @@ export const GallerySection: React.FC = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-14 sm:mb-20"
         >
-          <span className="font-arizonia text-3xl sm:text-4xl text-[#F7E2B5] block mb-2">
-            Cherished Moments
-          </span>
-          <h2 className="font-cinzel text-3xl sm:text-5xl text-[#FFFDF9] font-semibold tracking-wide uppercase drop-shadow-md">
-            Wedding Glimpses
-          </h2>
-          <p className="font-cormorant italic text-base sm:text-lg text-[#F0DCBA] mt-2 max-w-md mx-auto">
+          <div className="flex flex-col items-center">
+            <h2 className="font-cinzel text-3xl sm:text-5xl text-[#381F0D] font-bold tracking-wide uppercase drop-shadow-sm">
+              நினைவுப் படங்கள்
+            </h2>
+            <span className="font-cormorant text-xs sm:text-sm text-[#8C4A15] uppercase tracking-[0.25em] font-bold mt-1">
+              Wedding Glimpses
+            </span>
+          </div>
+          <p className="font-cormorant italic text-base sm:text-lg text-[#5C3B24] mt-2 max-w-md mx-auto font-medium">
             An editorial glimpse into our journey of togetherness and love.
           </p>
           <div className="flex items-center justify-center gap-3 w-32 mx-auto mt-4 opacity-70">
-            <div className="h-[1px] flex-1 bg-[#D4AF37]" />
-            <span className="text-[#D4AF37] text-xs">❖</span>
-            <div className="h-[1px] flex-1 bg-[#D4AF37]" />
+            <div className="h-[1px] flex-1 bg-[#C68A4C]" />
+            <span className="text-[#8C4A15] text-xs">❖</span>
+            <div className="h-[1px] flex-1 bg-[#C68A4C]" />
           </div>
         </motion.div>
 
@@ -111,7 +113,7 @@ export const GallerySection: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-40px' }}
               transition={{ delay: index * 0.12, duration: 0.8 }}
-              className={`group relative overflow-hidden rounded-2xl bg-[#25040B]/85 border border-[#D4AF37]/45 shadow-2xl cursor-pointer ${photo.className}`}
+              className={`group relative overflow-hidden rounded-2xl bg-[#FFFDF8] border-2 border-[#C68A4C]/50 shadow-md hover:shadow-xl cursor-pointer ${photo.className}`}
               onClick={() => setActivePhotoIndex(index)}
               data-cursor="gallery"
             >

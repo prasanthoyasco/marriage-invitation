@@ -124,23 +124,23 @@ export const OpeningCover: React.FC<OpeningCoverProps> = ({ isOpen, onOpen }) =>
               className="absolute top-4 sm:top-8 z-20 flex flex-col items-center pointer-events-none px-4"
             >
               {/* Monogram Seal */}
-              <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full border-2 border-[#D4AF37]/80 bg-[#120E0B]/85 backdrop-blur-md flex items-center justify-center shadow-2xl relative mb-2">
-                <span className="font-cinzel text-xs sm:text-sm font-bold text-[#F7E2B5] tracking-widest">
-                  A & M
+              <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full border-2 border-[#C68A4C] bg-[#FFFDF8]/95 backdrop-blur-md flex items-center justify-center shadow-xl relative mb-2">
+                <span className="font-cinzel text-xs sm:text-sm font-bold text-[#8C4A15] tracking-widest">
+                  {weddingConfig.couple.monogram || 'M & P'}
                 </span>
               </div>
 
-              <h1 className="font-cinzel text-lg sm:text-xl text-[#FAF9F7] tracking-wider mt-1 drop-shadow-md">
+              <h1 className="font-cinzel text-lg sm:text-xl text-[#381F0D] tracking-wider mt-1 drop-shadow-sm font-bold">
                 {weddingConfig.couple.title}
               </h1>
             </motion.div>
 
             {/* Central Animated Namaste Couple Container */}
-            <div className="relative w-full max-w-lg aspect-[4/5] sm:aspect-[4/3] max-h-[68vh] flex items-center justify-center rounded-3xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.8)] border-2 border-[#D4AF37]/60 bg-gradient-to-b from-[#25040B] via-[#1A0307] to-[#100104]">
+            <div className="relative w-full max-w-lg aspect-[4/5] sm:aspect-[4/3] max-h-[68vh] flex items-center justify-center rounded-3xl overflow-hidden shadow-[0_20px_50px_rgba(74,36,10,0.35)] border-2 border-[#C68A4C]/80 bg-gradient-to-b from-[#FFFDF8] via-[#FAF4E6] to-[#F3E5CE]">
               {/* Top Golden Filigree Border Accent */}
               <div className="absolute top-2 left-4 right-4 flex items-center justify-between pointer-events-none z-10 opacity-70">
-                <span className="text-xs text-[#D4AF37]">❖</span>
-                <span className="text-xs text-[#D4AF37]">❖</span>
+                <span className="text-xs text-[#8C4A15]">❖</span>
+                <span className="text-xs text-[#8C4A15]">❖</span>
               </div>
 
               {/* Animated Indian Wedding Namaste Couple GIF */}
@@ -149,10 +149,10 @@ export const OpeningCover: React.FC<OpeningCoverProps> = ({ isOpen, onOpen }) =>
                   <img
                     src={animeGif}
                     alt="Animated Indian Wedding Namaste Couple"
-                    className="w-full h-full object-contain filter drop-shadow-[0_8px_20px_rgba(212,175,55,0.3)] select-none"
+                    className="w-full h-full object-contain filter drop-shadow-[0_8px_20px_rgba(140,74,21,0.2)] select-none"
                   />
                   {/* Subtle golden ambient glow behind the couple */}
-                  <div className="absolute inset-0 bg-radial-gradient from-[#D4AF37]/15 via-transparent to-transparent pointer-events-none" />
+                  <div className="absolute inset-0 bg-radial-gradient from-[#C68A4C]/15 via-transparent to-transparent pointer-events-none" />
                 </div>
               ) : (
                 <video
@@ -168,21 +168,13 @@ export const OpeningCover: React.FC<OpeningCoverProps> = ({ isOpen, onOpen }) =>
 
               {/* Initial Tap to Open Overlay */}
               {!isPlaying && (
-                <div className="absolute inset-0 bg-black/45 backdrop-blur-[2px] flex flex-col items-center justify-center p-4 z-20">
-                  <motion.div
-                    animate={{ scale: [1, 1.08, 1] }}
-                    transition={{ repeat: Infinity, duration: 2 }}
-                    className="w-18 h-18 sm:w-20 sm:h-20 rounded-full flex items-center justify-center text-[#F7E2B5] shadow-[0_0_25px_rgba(212,175,55,0.4)] mb-4 backdrop-blur-md"
-                  >
-                    <Mail className="w-8 h-8 sm:w-9 sm:h-9 text-[#D4AF37]" />
-                  </motion.div>
-
-                  <span className="px-6 py-2.5 rounded-full bg-gradient-to-r from-[#D4AF37] via-[#E5C365] to-[#B38D28] text-[#1E0308] font-tamil text-sm sm:text-base font-bold shadow-xl tracking-wider uppercase transform hover:scale-105 transition-transform">
-                    {weddingConfig.openingCover.tapHint}
+                <div className="absolute inset-0 flex flex-col items-center justify-end p-4 z-20">
+                  <span className="px-6 py-2 rounded-full bg-gradient-to-r from-[#8C4A15] via-[#A85D1E] to-[#7A3E10] text-[#FFFDF8] font-bold shadow-xl tracking-wider uppercase transform hover:scale-105 transition-transform flex flex-col items-center leading-tight">
+                    <span className="font-tamil text-sm sm:text-base">{weddingConfig.openingCover.tapHint}</span>
+                    <span className="font-cormorant text-[11px] font-bold text-[#FAF0DC]">Tap to Open</span>
                   </span>
-
-                  <span className="text-xs font-tamil text-[#E5D0B2] mt-3">
-                    (அழைப்பிதழைத் திறக்க )
+                  <span className="text-xs font-tamil text-[#5C3B24] mt-3 font-semibold">
+                    (அழைப்பிதழைத் திறக்க)
                   </span>
                 </div>
               )}
@@ -190,13 +182,13 @@ export const OpeningCover: React.FC<OpeningCoverProps> = ({ isOpen, onOpen }) =>
               {/* Progress bar during Anime GIF playback */}
               {isPlaying && (
                 <div className="absolute bottom-4 left-6 right-6 z-20 flex flex-col items-center">
-                  <div className="w-full h-1 bg-white/20 rounded-full overflow-hidden mb-2">
+                  <div className="w-full h-1 bg-[#8C4A15]/20 rounded-full overflow-hidden mb-2">
                     <motion.div
-                      className="h-full bg-gradient-to-r from-[#D4AF37] to-[#FFF8E7]"
+                      className="h-full bg-gradient-to-r from-[#8C4A15] to-[#C68A4C]"
                       style={{ width: `${progress}%` }}
                     />
                   </div>
-                  <span className="text-xs font-tamil text-[#F7E2B5] tracking-wider animate-pulse font-medium">
+                  <span className="text-xs font-tamil text-[#5C3B24] tracking-wider animate-pulse font-bold">
                     திருமண அழைப்பிதழ் திறக்கப்படுகிறது...
                   </span>
                 </div>
@@ -213,9 +205,12 @@ export const OpeningCover: React.FC<OpeningCoverProps> = ({ isOpen, onOpen }) =>
                   e.stopPropagation();
                   handleFinish();
                 }}
-                className="mt-4 px-6 py-2 rounded-full bg-[#180206]/90 border border-[#D4AF37]/60 text-xs font-tamil text-[#F7E2B5] hover:bg-[#D4AF37] hover:text-[#180206] transition-colors shadow-lg"
+                className="mt-4 px-6 py-2 rounded-full bg-[#FAF0DC] border-2 border-[#C68A4C] text-xs font-tamil text-[#381F0D] hover:bg-[#F5E6CC] transition-colors shadow-lg flex flex-col items-center leading-tight font-semibold"
               >
-                நேரடியாக அழைப்பிதழுக்குச் செல்ல (Skip to Invite) ➔
+                <span>நேரடியாக அழைப்பிதழுக்குச் செல்ல</span>
+                <span className="font-cormorant text-[11px] uppercase tracking-widest text-[#8C4A15] font-bold">
+                  Skip to Invite ➔
+                </span>
               </motion.button>
             )}
           </motion.div>

@@ -81,8 +81,8 @@ export const AudioController: React.FC<AudioControllerProps> = ({ autoPlayTrigge
       <div className="relative flex items-center gap-2">
         {/* Playing audio title pill */}
         {isPlaying && (
-          <div className="hidden sm:flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#25040B]/90 backdrop-blur-md border border-[#D4AF37]/50 text-[#F7E2B5] text-xs font-serif shadow-xl animate-fade-in font-tamil">
-            <Music className="w-3.5 h-3.5 text-[#D4AF37] animate-bounce" />
+          <div className="hidden sm:flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FFFDF8]/95 backdrop-blur-md border border-[#C68A4C] text-[#381F0D] text-xs font-serif shadow-xl animate-fade-in font-tamil font-bold">
+            <Music className="w-3.5 h-3.5 text-[#8C4A15] animate-bounce" />
             <span>{weddingConfig.audio.title}</span>
           </div>
         )}
@@ -92,21 +92,21 @@ export const AudioController: React.FC<AudioControllerProps> = ({ autoPlayTrigge
           onClick={toggleAudio}
           aria-label={isPlaying ? 'இசையை நிறுத்த' : 'இசையை ஒலிக்க'}
           title={isPlaying ? 'இசையை நிறுத்த' : 'இசையை ஒலிக்க'}
-          className={`relative group flex items-center justify-center w-14 h-14 rounded-full backdrop-blur-md transition-all duration-300 shadow-2xl border ${
+          className={`relative group flex items-center justify-center w-14 h-14 rounded-full backdrop-blur-md transition-all duration-300 shadow-xl border ${
             isPlaying
-              ? 'bg-[#25040B]/95 border-[#D4AF37] text-[#D4AF37] ring-2 ring-[#D4AF37]/40 shadow-[#D4AF37]/30'
-              : 'bg-[#1E0308]/85 border-[#D4AF37]/30 text-[#FFFDF9]/80 hover:text-white'
+              ? 'bg-[#FFFDF8] border-2 border-[#C68A4C] text-[#8C4A15] ring-2 ring-[#C68A4C]/40 shadow-[#C68A4C]/30'
+              : 'bg-[#FAF0DC] border border-[#C68A4C]/60 text-[#5C2D0C] hover:text-[#381F0D]'
           }`}
         >
           {isPlaying ? (
             <>
               {/* Subtle expanding soundwaves ring */}
-              <span className="absolute -inset-1.5 rounded-full border border-[#D4AF37]/50 animate-ping pointer-events-none opacity-30" />
+              <span className="absolute -inset-1.5 rounded-full border border-[#C68A4C]/50 animate-ping pointer-events-none opacity-30" />
 
               {/* Rotating golden vinyl grooves */}
-              <div className="absolute inset-1 rounded-full border border-[#D4AF37]/20 animate-spin-slow pointer-events-none" />
+              <div className="absolute inset-1 rounded-full border border-[#C68A4C]/20 animate-spin-slow pointer-events-none" />
 
-              <Volume2 className="w-5 h-5 text-[#E0B278]" />
+              <Volume2 className="w-5 h-5 text-[#8C4A15]" />
             </>
           ) : (
             <VolumeX className="w-5 h-5" />

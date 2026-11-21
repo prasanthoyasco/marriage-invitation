@@ -39,19 +39,18 @@ export const WishesSection: React.FC = () => {
           transition={{ duration: 0.8 }}
           className="mb-14 sm:mb-20"
         >
-          <span className="font-arizonia text-3xl sm:text-4xl text-[#F7E2B5] block mb-2">
-            Warm Wishes & Blessings
-          </span>
-          <h2 className="font-cinzel text-3xl sm:text-5xl text-[#FFFDF9] font-semibold tracking-wide uppercase drop-shadow-md">
-            Sweet Notes
-          </h2>
-          <p className="font-tamil text-sm text-[#D4AF37] mt-2 font-medium">
-            அன்பான வாழ்த்துகள்
-          </p>
+          <div className="flex flex-col items-center">
+            <h2 className="font-cinzel text-3xl sm:text-5xl text-[#381F0D] font-bold tracking-wide uppercase drop-shadow-sm">
+              அன்பான வாழ்த்துகள்
+            </h2>
+            <span className="font-cormorant text-xs sm:text-sm text-[#8C4A15] uppercase tracking-[0.25em] font-bold mt-1">
+              Sweet Notes & Blessings
+            </span>
+          </div>
           <div className="flex items-center justify-center gap-3 w-32 mx-auto mt-4 opacity-70">
-            <div className="h-[1px] flex-1 bg-[#D4AF37]" />
-            <span className="text-[#D4AF37] text-xs">❦</span>
-            <div className="h-[1px] flex-1 bg-[#D4AF37]" />
+            <div className="h-[1px] flex-1 bg-[#C68A4C]" />
+            <span className="text-[#8C4A15] text-xs">❦</span>
+            <div className="h-[1px] flex-1 bg-[#C68A4C]" />
           </div>
         </motion.div>
 
@@ -61,9 +60,9 @@ export const WishesSection: React.FC = () => {
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
         >
-          <div className="relative min-h-[240px] sm:min-h-[220px] flex items-center justify-center bg-[#25040B]/85 backdrop-blur-md p-8 sm:p-12 rounded-3xl shadow-2xl border border-[#D4AF37]/45">
+          <div className="relative min-h-[240px] sm:min-h-[220px] flex items-center justify-center bg-[#FFFDF8]/95 backdrop-blur-md p-8 sm:p-12 rounded-3xl shadow-[0_15px_45px_rgba(74,36,10,0.12)] border-2 border-[#C68A4C]/60">
             {/* Top Quote Icon */}
-            <div className="absolute -top-5 left-1/2 -translate-x-1/2 w-11 h-11 rounded-full bg-[#D4AF37] text-[#25040B] flex items-center justify-center shadow-lg border-2 border-[#FFF8E7]">
+            <div className="absolute -top-5 left-1/2 -translate-x-1/2 w-11 h-11 rounded-full bg-[#FAF0DC] text-[#8C4A15] flex items-center justify-center shadow-md border-2 border-[#C68A4C]">
               <Quote className="w-5 h-5 fill-current" />
             </div>
 
@@ -76,11 +75,11 @@ export const WishesSection: React.FC = () => {
                 transition={{ duration: 0.45, ease: 'easeOut' }}
                 className="flex flex-col items-center justify-center max-w-2xl px-2"
               >
-                <p className="font-garamond text-lg sm:text-xl md:text-2xl text-[#FFFDF9] italic leading-relaxed mb-6 font-normal">
+                <p className="font-garamond text-lg sm:text-xl md:text-2xl text-[#381F0D] italic leading-relaxed mb-6 font-medium">
                   "{currentWish.message}"
                 </p>
-                <div className="w-10 h-[1px] bg-[#D4AF37]/60 mb-3" />
-                <span className="font-cinzel text-sm sm:text-base font-semibold text-[#D4AF37] tracking-wider">
+                <div className="w-10 h-[1px] bg-[#C68A4C]/60 mb-3" />
+                <span className="font-cinzel text-sm sm:text-base font-bold text-[#8C4A15] tracking-wider">
                   {currentWish.name}
                 </span>
               </motion.div>
@@ -92,7 +91,7 @@ export const WishesSection: React.FC = () => {
             type="button"
             onClick={handlePrev}
             aria-label="Previous wish"
-            className="absolute left-0 sm:left-2 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-[#25040B]/90 border border-[#D4AF37]/50 text-[#D4AF37] hover:bg-[#D4AF37] hover:text-[#25040B] flex items-center justify-center shadow-lg transition-all duration-200"
+            className="absolute left-0 sm:left-2 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-[#FFFDF8] border-2 border-[#C68A4C]/60 text-[#8C4A15] hover:bg-[#FAF0DC] flex items-center justify-center shadow-lg transition-all duration-200"
           >
             <ChevronLeft className="w-6 h-6" />
           </button>
@@ -100,7 +99,7 @@ export const WishesSection: React.FC = () => {
             type="button"
             onClick={handleNext}
             aria-label="Next wish"
-            className="absolute right-0 sm:right-2 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-[#25040B]/90 border border-[#D4AF37]/50 text-[#D4AF37] hover:bg-[#D4AF37] hover:text-[#25040B] flex items-center justify-center shadow-lg transition-all duration-200"
+            className="absolute right-0 sm:right-2 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-[#FFFDF8] border-2 border-[#C68A4C]/60 text-[#8C4A15] hover:bg-[#FAF0DC] flex items-center justify-center shadow-lg transition-all duration-200"
           >
             <ChevronRight className="w-6 h-6" />
           </button>

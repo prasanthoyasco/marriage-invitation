@@ -3,16 +3,16 @@
 @tailwind utilities;
 
 :root {
-  --color-gold-primary: #D4AF37;
-  --color-gold-light: #F7E2B5;
-  --color-gold-dark: #A48028;
-  --color-gold-muted: #D1B474;
-  --color-bg-light: #3D0814;
-  --color-bg-card: rgba(52, 8, 18, 0.88);
-  --color-text-dark: #FFFDF9;
-  --color-text-muted: #EAD2B2;
-  --color-border-subtle: rgba(212, 175, 55, 0.25);
-  --color-border-gold: #D4AF37;
+  --color-gold-primary: #B8860B;
+  --color-gold-light: #F4E8D1;
+  --color-gold-dark: #7A3E10;
+  --color-gold-muted: #C68A4C;
+  --color-bg-light: #FAF4E6;
+  --color-bg-card: rgba(255, 253, 248, 0.95);
+  --color-text-dark: #381F0D;
+  --color-text-muted: #7A5333;
+  --color-border-subtle: rgba(198, 138, 76, 0.4);
+  --color-border-gold: #C68A4C;
   
   --font-cinzel: "Cinzel Decorative", Georgia, serif;
   --font-cormorant: "Cormorant Garamond", Georgia, serif;
@@ -50,19 +50,19 @@ body.overflow-hidden-envelope {
   width: 7px;
 }
 ::-webkit-scrollbar-track {
-  background: #24040B;
+  background: #F3E5CF;
 }
 ::-webkit-scrollbar-thumb {
-  background: #D4AF37;
+  background: #C68A4C;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #F7E2B5;
+  background: #9A531B;
 }
 
 /* Gold foil text gradient effect */
 .text-gold-gradient {
-  background: linear-gradient(135deg, #FBF2DE 0%, #D4AF37 35%, #F7E2B5 50%, #C29A38 65%, #F0D394 100%);
+  background: linear-gradient(135deg, #7A3E10 0%, #B87333 35%, #9A531B 50%, #C68A4C 70%, #6B3410 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;

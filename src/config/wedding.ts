@@ -2,10 +2,10 @@ import type { WeddingConfig } from '../types/wedding';
 
 export const weddingConfig: WeddingConfig = {
   meta: {
-    title: "அர்ஜுன் & மீனாட்சி - திருமண அழைப்பிதழ்",
+    title: "மதுபிரசாத் & பிரியதர்ஷினி - திருமண அழைப்பிதழ்",
     description:
-      "பெரியோர்களின் நல்லாசியுடன், அர்ஜுன் மற்றும் மீனாட்சியின் சுபமுகூர்த்த திருமணத்திற்கு தங்களை அன்புடன் அழைக்கிறோம்.",
-    siteUrl: "https://arjunwedsmeenakshi.com",
+      "பெரியோர்களின் நல்லாசியுடன், மதுபிரசாத் மற்றும் பிரியதர்ஷினியின் சுபமுகூர்த்த திருமணத்திற்கு தங்களை அன்புடன் அழைக்கிறோம்.",
+    siteUrl: "https://madhuprasadwedspriyadharshini.com",
     ogImage: "/assets/images/couple-portrait.jpg"
   },
 
@@ -44,21 +44,24 @@ export const weddingConfig: WeddingConfig = {
   },
 
   couple: {
-    title: "அர்ஜுன் weds மீனாட்சி",
-    tamilTitle: "அர்ஜுன் & மீனாட்சி திருமண விழா",
+    title: "மதுபிரசாத் weds பிரியதர்ஷினி",
+    tamilTitle: "மதுபிரசாத் & பிரியதர்ஷினி திருமண விழா",
+    monogram: "M & P",
     subtitle: "இரு மனங்கள் இணையும் இனிய தொடக்கம்",
 
-    heroImage: "/public/assets/images/Traditional Indian Couple Wedding Sticker.png",
-    portraitImage: "/assets/images/couple-portrait.jpg",
+    heroImage: "/assets/images/invitation-card.jpg",
+    portraitImage: "/assets/images/invitation-card-back.jpg",
     firstInvitationCard: "/assets/images/invitation-card.jpg",
     animeVideo: "/assets/images/couple-namaste.gif",
     animeGif: "/Animated Indian Wedding Namaste Couple.gif",
 
     groom: {
-      title: "Er.",
-      name: "அர்ஜுன்",
-      fullName: "Er. அர்ஜுன்",
-      tamilName: "Er. அர்ஜுன்",
+      title: "",
+      name: "மதுபிரசாத் R",
+      fullName: "மதுபிரசாத் R (Madhuprasad R)",
+      tamilName: "மதுபிரசாத் R",
+      labelTamil: "மாப்பிள்ளை",
+      nameTransliteration: "Madhuprasad R",
       role: "Groom",
 
       parents: {
@@ -68,10 +71,12 @@ export const weddingConfig: WeddingConfig = {
     },
 
     bride: {
-      title: "Ms.",
-      name: "மீனாட்சி",
-      fullName: "செல்வி. மீனாட்சி",
-      tamilName: "செல்வி. மீனாட்சி",
+      title: "",
+      name: "பிரியதர்ஷினி J",
+      fullName: "பிரியதர்ஷினி J (Priyadharshini J)",
+      tamilName: "பிரியதர்ஷினி J",
+      labelTamil: "மணப்பெண்",
+      nameTransliteration: "Priyadharshini J",
       role: "Bride",
 
       parents: {
@@ -82,15 +87,15 @@ export const weddingConfig: WeddingConfig = {
   },
 
   dates: {
-    wedding: "2026-11-29T09:00:00+05:30",
-    engagement: "2026-11-27T18:00:00+05:30",
-    reception: "2026-11-28T18:00:00+05:30",
+    wedding: "2027-02-08T06:00:00+05:30",
+    engagement: "2027-02-07T18:00:00+05:30",
+    reception: "2027-02-07T18:00:00+05:30",
 
     timezone: "Asia/Kolkata",
 
-    displayWeddingDate: "நவம்பர் 29, 2026",
-    displayShortDate: "29-11-2026",
-    displayTamilDate: "பிலவ வருடம் - கார்த்திகை 13 (ஞாயிற்றுக்கிழமை)"
+    displayWeddingDate: "பிப்ரவரி 8, 2027 (திங்கட்கிழமை)",
+    displayShortDate: "08-02-2027",
+    displayTamilDate: "பிப்ரவரி 08, 2027 (திங்கட்கிழமை)"
   },
 
   invocation: {
@@ -118,41 +123,41 @@ export const weddingConfig: WeddingConfig = {
     {
       id: "reception",
       title: "வரவேற்பு விழா & டிஜே இசை இரவு",
-      tamilTitle: "வரவேற்பு விழா & டிஜே கொண்டாட்டம்",
-      subtitle: "Reception & DJ Musical Evening",
-      date: "நவம்பர் 28, 2026 (சனிக்கிழமை)",
-      tamilDate: "28-11-2026 சனிக்கிழமை",
-      time: "மாலை 6:00 மணி முதல் இரவு 10:00 மணி வரை",
+      tamilTitle: "வரவேற்பு விழா (Reception)",
+      subtitle: "Reception • 6:00 PM - 10:00 PM",
+      date: "பிப்ரவரி 07, 2027 (ஞாயிற்றுக்கிழமை)",
+      tamilDate: "07-02-2027 ஞாயிற்றுக்கிழமை",
+      time: "மாலை 6:00 மணி முதல் இரவு 10:00 மணி வரை (6:00 PM - 10:00 PM)",
       secondaryTime: "🎧 டிஜே இசை இரவு: இரவு 9:00 முதல் 10:00 வரை",
       description:
         "இனிய இசை, ஆனந்த நடனம் மற்றும் சுவையான அறுசுவை உணவோடு மணமக்களை வரவேற்று மகிழும் இனிய கொண்டாட்ட மாலை.",
       tamilDescription:
         "மணமக்கள் இணைந்து ஆடும் ஆனந்த நடனக் காட்சியோடு மாலை 6.00 மணி முதல் 10.00 மணி வரை வரவேற்பு விழாவும், இரவு 9.00 முதல் 10.00 மணி வரை துள்ளலான டிஜே இசை இரவும் நடைபெறும்.",
-      venueName: "ஸ்ரீ லட்சுமி மஹால்",
-      address: "அவினாசி சாலை, கோயம்புத்தூர், தமிழ்நாடு",
-      mapsUrl: "https://maps.google.com",
-      image: "/assets/images/event-wedding.jpg",
+      venueName: "ஸ்ரீ ரங்கநாயகி கல்யாண மண்டபம்",
+      address: "நங்கநல்லூர், சென்னை (Sri Ranganayaki Kalyana Mandapam, Nanganallur, Chennai)",
+      mapsUrl: "https://maps.google.com/?q=Sri+Ranganayaki+Kalyana+Mandapam+Nanganallur+Chennai",
+      image: "/assets/images/event-wedding.png",
       video: "/assets/video/reception-dance.mp4",
-      videoPoster: "/assets/images/event-wedding.jpg",
+      videoPoster: "/assets/images/event-wedding.png",
       videoDurationText: "நடனக் காட்சி"
     },
 
     {
       id: "muhurtham",
       title: "புனித சுபமுகூர்த்தம் & தாலி கட்டுதல்",
-      tamilTitle: "சுபமுகூர்த்த திருமாங்கல்ய தாரணம்",
-      subtitle: "Auspicious Muhurtham & Thaali Kettu",
-      date: "நவம்பர் 29, 2026 (ஞாயிற்றுக்கிழமை)",
-      tamilDate: "29-11-2026 ஞாயிற்றுக்கிழமை",
-      time: "காலை 9:00 மணி முதல் 10:30 மணி வரை",
-      secondaryTime: "மாங்கல்ய தாரணம்: காலை 9:45 மணி சுபவேளையில்",
+      tamilTitle: "சுபமுகூர்த்தம் (Muhurtham)",
+      subtitle: "Muhurtham • 6:00 AM - 7:00 AM",
+      date: "பிப்ரவரி 08, 2027 (திங்கட்கிழமை)",
+      tamilDate: "08-02-2027 திங்கட்கிழமை",
+      time: "காலை 6:00 மணி முதல் காலை 7:00 மணி வரை (6:00 AM - 7:00 AM)",
+      secondaryTime: "மாங்கல்ய தாரணம்: காலை 6:00 மணி முதல் 7:00 மணி வரை சுபவேளையில்",
       description:
         "மங்கள வாத்தியங்கள் முழங்க, பெரியோர்களின் அட்சதை ஆசியுடன் நடைபெறும் புனிதத் திருமாங்கல்ய தாரண சுப முகூர்த்தம்.",
       tamilDescription:
         "கெட்டிமேளம் கொட்டி, பொற்றாலி சூட்டி இருமனங்கள் இணையும் 10 நொடி புனித திருமாங்கல்ய தாரணத் தருணம்.",
-      venueName: "ஸ்ரீ லட்சுமி மஹால்",
-      address: "அவினாசி சாலை, கோயம்புத்தூர், தமிழ்நாடு",
-      mapsUrl: "https://maps.google.com",
+      venueName: "ஸ்ரீ ரங்கநாயகி கல்யாண மண்டபம்",
+      address: "நங்கநல்லூர், சென்னை (Sri Ranganayaki Kalyana Mandapam, Nanganallur, Chennai)",
+      mapsUrl: "https://maps.google.com/?q=Sri+Ranganayaki+Kalyana+Mandapam+Nanganallur+Chennai",
       image: "Thaali-Kattudhal Wedding Ceremony Sequence.gif",
       video: "/assets/video/muhurtham-thaali.mp4",
       videoPoster: "/assets/images/Muhurtham.jpg",
@@ -185,10 +190,10 @@ export const weddingConfig: WeddingConfig = {
   venues: [
     {
       id: "venue-wedding",
-      type: "திருமண மஹால்",
-      name: "ஸ்ரீ லட்சுமி மஹால்",
-      address: "அவினாசி சாலை, கோயம்புத்தூர், தமிழ்நாடு",
-      mapsUrl: "https://maps.google.com"
+      type: "திருமண மஹால் (Wedding Venue)",
+      name: "ஸ்ரீ ரங்கநாயகி கல்யாண மண்டபம் (Sri Ranganayaki Kalyana Mandapam)",
+      address: "ஸ்ரீ ரங்கநாயகி கல்யாண மண்டபம், நங்கநல்லூர், சென்னை (Nanganallur, Chennai)",
+      mapsUrl: "https://maps.google.com/?q=Sri+Ranganayaki+Kalyana+Mandapam+Nanganallur+Chennai"
     }
   ],
 
@@ -196,7 +201,7 @@ export const weddingConfig: WeddingConfig = {
     {
       id: "w1",
       name: "கார்த்திக் & குடும்பத்தினர்",
-      message: "அன்புத் தம்பதியர் அர்ஜுன் - மீனாட்சிக்கு மனமார்ந்த திருமண நல்வாழ்த்துகள்! பல்லாண்டு வாழ்க வளமுடன்! 🌸💛"
+      message: "அன்புத் தம்பதியர் மதுபிரசாத் - பிரியதர்ஷினிக்கு மனமார்ந்த திருமண நல்வாழ்த்துகள்! பல்லாண்டு வாழ்க வளமுடன்! 🌸💛"
     },
     {
       id: "w2",
@@ -270,18 +275,18 @@ export const weddingConfig: WeddingConfig = {
       "கீழேயுள்ள பொத்தானை அழுத்தி உங்கள் Google அல்லது Apple நாட்காட்டியில் சேர்க்கலாம். திருமணத்திற்கு 1 வாரத்திற்கு முன்பும் மற்றும் 1 மணி நேரத்திற்கு முன்பும் தானாகவே நினைவூட்டல் (Reminder) தோன்றும்.",
 
     calendarEvent: {
-      title: "அர்ஜுன் & மீனாட்சி திருமண விழா",
+      title: "மதுபிரசாத் & பிரியதர்ஷினி திருமண விழா (Madhuprasad & Priyadharshini Wedding)",
       description:
-        "அர்ஜுன் மற்றும் மீனாட்சியின் சுபமுகூர்த்த திருமண விழா. வரவேற்பு: நவம்பர் 28 மாலை 6:00 மணி முதல், சுபமுகூர்த்தம்: நவம்பர் 29 காலை 9:00 மணி முதல் ஸ்ரீ லட்சுமி மஹால், கோயம்புத்தூரில் நடைபெறுகிறது.",
-      location: "ஸ்ரீ லட்சுமி மஹால், அவினாசி சாலை, கோயம்புத்தூர்",
-      startDate: "20261129T090000",
-      endDate: "20261129T130000"
+        "மதுபிரசாத் மற்றும் பிரியதர்ஷினியின் சுபமுகூர்த்த திருமண விழா. வரவேற்பு: பிப்ரவரி 07 மாலை 6:00 முதல் 10:00 வரை, சுபமுகூர்த்தம்: பிப்ரவரி 08 காலை 6:00 முதல் 7:00 வரை. இடம்: ஸ்ரீ ரங்கநாயகி கல்யாண மண்டபம், நங்கநல்லூர், சென்னை.",
+      location: "Sri Ranganayaki Kalyana Mandapam, Nanganallur, Chennai",
+      startDate: "20270208T060000",
+      endDate: "20270208T070000"
     }
   },
 
   footer: {
-    title: "அர்ஜுன் weds மீனாட்சி",
-    date: "29-11-2026",
+    title: "மதுபிரசாத் weds பிரியதர்ஷினி",
+    date: "08-02-2027",
     creditText: "அன்போடு வடிவமைக்கப்பட்டது",
     creditLink: "https://ateliertechnologysolutions.com/"
   }
