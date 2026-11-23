@@ -170,7 +170,7 @@ export const weddingConfig: WeddingConfig = {
     title: "ஸ்ரீ அனுமன் இதயத்தில் தெய்வீக தம்பதியர்",
     tamilTitle: "ராம பக்தன் ஸ்ரீ அனுமன் ஆசி",
     subtitle: "Ajay as Lord Hanuman Revealing the Couple in His Heart",
-    image: "/assets/images/ajay-hanuman.jpg",
+    image: "/assets/images/ajay-hanuman.gif",
     caption:
       "நெஞ்சைத் திறந்து சீதா ராமரைக் காட்டிய பக்த அனுமன் போல், இதயத்தில் நிறைந்து அருள் பாலிக்கும் தெய்வீகப் பாதுகாப்பு & பேரன்பு.",
     tamilVerse:
