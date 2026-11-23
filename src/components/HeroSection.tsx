@@ -152,7 +152,7 @@ export const HeroSection: React.FC = () => {
         </motion.div>
 
         {/* Golden Ornamental Flourish Line */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, scaleX: 0 }}
           animate={{ opacity: 0.8, scaleX: 1 }}
           transition={{ delay: 0.5, duration: 0.8 }}
@@ -387,23 +387,6 @@ export const HeroSection: React.FC = () => {
                 ? '◀ இடப்புறம் இழுக்க அல்லது தொட, முன் பக்கம் திரும்பும்'
                 : 'வலப்புறம் இழுக்க அல்லது தொட, பின் பக்கம் திரும்பும் ➔'}
             </p>
-          </div>
-
-          {/* 3-5 Sec Anime Video Button (Req #2) */}
-          <div className="mt-4 flex justify-center">
-            <button
-              type="button"
-              onClick={() => setShowAnimeModal(true)}
-              className="inline-flex items-center gap-2.5 px-6 py-2.5 rounded-full border border-[#C68A4C] bg-[#FFFDF8]/95 hover:bg-[#C68A4C] hover:text-[#FFFDF8] text-[#5C2D0C] text-xs sm:text-sm font-bold tracking-wider uppercase transition-all duration-300 shadow-md group font-tamil"
-            >
-              <Film className="w-4 h-4 text-[#B8860B] group-hover:text-[#FFFDF8] transition-colors" />
-              <div className="flex flex-col items-center leading-tight">
-                <span>3-5 நொடி அனிமேஷன் காட்சி</span>
-                <span className="font-cormorant text-[11px] uppercase tracking-widest text-[#9A531B] group-hover:text-[#FFFDF8] font-semibold">
-                  Anime Video
-                </span>
-              </div>
-            </button>
           </div>
         </motion.div>
       </div>
