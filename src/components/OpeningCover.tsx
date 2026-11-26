@@ -104,7 +104,7 @@ export const OpeningCover: React.FC<OpeningCoverProps> = ({ isOpen, onOpen }) =>
           <FloatingPetals count={16} className="opacity-60" />
 
           {/* Deep Cinematic Warm Background Vignette */}
-          <div className="absolute inset-0 bg-radial-gradient from-[#241a14]/70 via-[#140f0c] to-[#080605] pointer-events-none" />
+          <div className="absolute inset-0 bg-[#e5d3a2] pointer-events-none" />
 
           {/* Camera Zoom & Envelope / Anime Wrapper */}
           <motion.div
@@ -130,7 +130,7 @@ export const OpeningCover: React.FC<OpeningCoverProps> = ({ isOpen, onOpen }) =>
                 </span>
               </div>
 
-              <h1 className="font-cinzel text-lg sm:text-xl text-[#381F0D] tracking-wider mt-1 drop-shadow-sm font-bold">
+              <h1 className="font-cinzel text-sm sm:text-lg text-center text-[#381F0D] tracking-wider mt-1 drop-shadow-sm font-bold">
                 {weddingConfig.couple.title}
               </h1>
             </motion.div>

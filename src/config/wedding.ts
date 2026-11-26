@@ -137,7 +137,7 @@ export const weddingConfig: WeddingConfig = {
       address: "Sri Ranganayaki Kalyana Mandapam, Nanganallur, Chennai",
       mapsUrl: "https://maps.google.com/?q=Sri+Ranganayaki+Kalyana+Mandapam+Nanganallur+Chennai",
       image: "/assets/images/event-wedding.jpeg",
-      video: "/assets/video/coupledance.mp4",
+      video: "/assets/video/coupledance.mp",
       videoPoster: "/assets/images/event-wedding.png",
       videoDurationText: "Couple Dance"
     },
