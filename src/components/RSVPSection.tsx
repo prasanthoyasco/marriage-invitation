@@ -85,19 +85,19 @@ export const RSVPSection: React.FC = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-10"
         >
-          <span className="font-tamil text-sm text-[#7A3E10] block mb-1 font-semibold">
-            தங்கள் வருகை எங்கள் பெருமகிழ்ச்சி
+          <span className="font-cormorant text-xs sm:text-sm text-[#8C4A15] block mb-1 font-bold uppercase tracking-widest">
+            Your Presence is Our Greatest Joy
           </span>
           <div className="flex flex-col items-center">
-            <h2 className="font-cinzel text-2xl sm:text-4xl text-[#381F0D] font-bold tracking-wide uppercase">
-              வருகை உறுதி
-            </h2>
-            <span className="font-cormorant text-xs sm:text-sm text-[#8C4A15] tracking-[0.25em] uppercase font-bold mt-0.5">
+            <h2 className="font-cinzel text-3xl sm:text-5xl text-[#381F0D] font-bold tracking-wide uppercase drop-shadow-sm">
               RSVP
+            </h2>
+            <span className="font-tamil text-xs sm:text-sm text-[#7A3E10] font-semibold mt-1">
+              வருகை உறுதி
             </span>
           </div>
-          <p className="font-tamil text-sm text-[#5C3B24] mt-1 font-medium">
-            உங்கள் குடும்பத்தின் வருகையை அன்புடன் உறுதி செய்க
+          <p className="font-cormorant text-base sm:text-lg text-[#5C3B24] mt-2 font-medium">
+            Please confirm the attendance of your family to celebrate with us.
           </p>
           <div className="flex items-center justify-center gap-3 w-28 mx-auto mt-3 opacity-60">
             <div className="h-[1px] flex-1 bg-gradient-to-r from-transparent to-[#C68A4C]" />
@@ -125,10 +125,13 @@ export const RSVPSection: React.FC = () => {
               <div className="w-14 h-14 rounded-full bg-[#FAF0DC] border border-[#C68A4C] text-[#8C4A15] flex items-center justify-center mx-auto mb-4 shadow-md">
                 <CheckCircle className="w-8 h-8 text-[#8C4A15]" />
               </div>
-              <h3 className="font-cinzel text-xl sm:text-2xl text-[#381F0D] font-bold mb-2">
-                பதிவு செய்யப்பட்டது!
+              <h3 className="font-cinzel text-xl sm:text-2xl text-[#381F0D] font-bold mb-1">
+                RSVP Received!
               </h3>
-              <p className="font-tamil text-base sm:text-lg text-[#5C3B24] mb-6 leading-relaxed font-medium">
+              <span className="font-tamil text-xs text-[#7A3E10] block mb-2 font-semibold">
+                (பதிவு செய்யப்பட்டது!)
+              </span>
+              <p className="font-cormorant text-base sm:text-lg text-[#5C3B24] mb-6 leading-relaxed font-medium">
                 {successMessage}
               </p>
 
@@ -142,7 +145,7 @@ export const RSVPSection: React.FC = () => {
                     className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-[#25D366] hover:bg-[#20bd5a] text-[#ffffff] font-bold text-sm uppercase tracking-wide transition-all shadow-lg"
                   >
                     <MessageSquareShare className="w-4 h-4" />
-                    <span>அஜய்க்கு வாட்ஸ்அப் மூலம் அனுப்ப</span>
+                    <span>Send RSVP to Ajay on WhatsApp</span>
                   </a>
                 </div>
               )}
@@ -150,9 +153,9 @@ export const RSVPSection: React.FC = () => {
               <button
                 type="button"
                 onClick={handleReset}
-                className="px-6 py-2.5 rounded-xl border-2 border-[#C68A4C] text-[#381F0D] hover:bg-[#FAF0DC] text-xs font-bold uppercase tracking-wider transition-all duration-300 shadow-sm font-tamil"
+                className="px-6 py-2.5 rounded-xl border-2 border-[#C68A4C] text-[#381F0D] hover:bg-[#FAF0DC] text-xs font-bold uppercase tracking-wider transition-all duration-300 shadow-sm font-sans"
               >
-                மற்றொரு பதில் சமர்ப்பிக்க
+                Submit Another Response
               </button>
             </div>
           ) : (
@@ -166,10 +169,10 @@ export const RSVPSection: React.FC = () => {
 
               {/* 1. Family Name */}
               <div>
-                <label htmlFor="rsvp-family" className="block text-xs uppercase tracking-wider text-[#381F0D] font-bold mb-1.5 font-tamil">
-                  <span>குடும்பத்தின் பெயர் *</span>
-                  <span className="font-cormorant text-[11px] text-[#8C4A15] font-semibold lowercase tracking-wider block mt-0.5">
-                    (family name)
+                <label htmlFor="rsvp-family" className="block text-xs uppercase tracking-wider text-[#381F0D] font-bold mb-1.5 font-sans">
+                  <span>Family / Guest Name *</span>
+                  <span className="font-tamil text-[11px] text-[#7A3E10] font-normal lowercase tracking-normal block mt-0.5">
+                    (குடும்பத்தின் பெயர்)
                   </span>
                 </label>
                 <input
@@ -178,17 +181,17 @@ export const RSVPSection: React.FC = () => {
                   required
                   value={familyName}
                   onChange={(e) => setFamilyName(e.target.value)}
-                  placeholder="எ.கா: ராமு மற்றும் குடும்பத்தினர்"
-                  className="w-full px-4 py-3 rounded-xl border border-[#C68A4C]/50 focus:border-[#8C4A15] focus:ring-1 focus:ring-[#8C4A15] outline-none text-[#381F0D] placeholder-[#8C6B52]/50 text-sm sm:text-base transition-colors bg-[#FFFDF9] font-tamil font-medium shadow-2xs"
+                  placeholder="e.g. Ramu and Family"
+                  className="w-full px-4 py-3 rounded-xl border border-[#C68A4C]/50 focus:border-[#8C4A15] focus:ring-1 focus:ring-[#8C4A15] outline-none text-[#381F0D] placeholder-[#8C6B52]/50 text-sm sm:text-base transition-colors bg-[#FFFDF9] font-medium shadow-2xs"
                 />
               </div>
 
               {/* 2. WhatsApp Number */}
               <div>
-                <label htmlFor="rsvp-whatsapp" className="block text-xs uppercase tracking-wider text-[#381F0D] font-bold mb-1.5 font-tamil">
-                  <span>வாட்ஸ்அப் எண் *</span>
-                  <span className="font-cormorant text-[11px] text-[#8C4A15] font-semibold lowercase tracking-wider block mt-0.5">
-                    (whatsapp number)
+                <label htmlFor="rsvp-whatsapp" className="block text-xs uppercase tracking-wider text-[#381F0D] font-bold mb-1.5 font-sans">
+                  <span>WhatsApp Number *</span>
+                  <span className="font-tamil text-[11px] text-[#7A3E10] font-normal lowercase tracking-normal block mt-0.5">
+                    (வாட்ஸ்அப் எண்)
                   </span>
                 </label>
                 <input
@@ -204,13 +207,13 @@ export const RSVPSection: React.FC = () => {
 
               {/* 3. Expected Family Members / Guest Count */}
               <div>
-                <label htmlFor="rsvp-count" className="block text-xs uppercase tracking-wider text-[#381F0D] font-bold mb-1.5 font-tamil">
+                <label htmlFor="rsvp-count" className="block text-xs uppercase tracking-wider text-[#381F0D] font-bold mb-1.5 font-sans">
                   <div className="flex items-center gap-1.5">
                     <Users className="w-3.5 h-3.5 text-[#8C4A15]" />
-                    <span>வருகை தரும் நபர்களின் எண்ணிக்கை *</span>
+                    <span>Number of Guests Attending *</span>
                   </div>
-                  <span className="font-cormorant text-[11px] text-[#8C4A15] font-semibold lowercase tracking-wider block mt-0.5 pl-5">
-                    (you can expect our family by)
+                  <span className="font-cormorant text-[12px] text-[#8C4A15] font-semibold tracking-wide block mt-0.5 pl-5">
+                    You can expect our family by:
                   </span>
                 </label>
                 <div className="grid grid-cols-5 gap-2">
@@ -219,13 +222,12 @@ export const RSVPSection: React.FC = () => {
                       key={num}
                       type="button"
                       onClick={() => setGuestCount(num)}
-                      className={`py-2.5 rounded-xl border text-sm font-bold transition-all ${
-                        guestCount === num
+                      className={`py-2.5 rounded-xl border text-sm font-bold transition-all ${guestCount === num
                           ? 'bg-gradient-to-r from-[#8C4A15] to-[#7A3E10] text-[#FFFDF8] border-[#8C4A15] shadow-md scale-105'
                           : 'bg-[#FAF0DC] text-[#5C2D0C] border-[#C68A4C]/40 hover:border-[#8C4A15]'
-                      }`}
+                        }`}
                     >
-                      {num} {num === '5+' ? 'நபர்கள்' : 'பேர்'}
+                      {num} {num === '1' ? 'Person' : 'People'}
                     </button>
                   ))}
                 </div>
@@ -233,19 +235,18 @@ export const RSVPSection: React.FC = () => {
 
               {/* 4. Attendance Options */}
               <div>
-                <label className="block text-xs uppercase tracking-wider text-[#381F0D] font-bold mb-2 font-tamil">
-                  <span>வருகை விருப்பம் *</span>
-                  <span className="font-cormorant text-[11px] text-[#8C4A15] font-semibold lowercase tracking-wider block mt-0.5">
-                    (attendance confirmation)
+                <label className="block text-xs uppercase tracking-wider text-[#381F0D] font-bold mb-2 font-sans">
+                  <span>Attendance Confirmation *</span>
+                  <span className="font-tamil text-[11px] text-[#7A3E10] font-normal lowercase tracking-normal block mt-0.5">
+                    (வருகை விருப்பம்)
                   </span>
                 </label>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <label
-                    className={`flex items-center gap-3 p-3.5 rounded-xl border cursor-pointer transition-all duration-200 ${
-                      attendance === 'Joyfully Attending'
+                    className={`flex items-center gap-3 p-3.5 rounded-xl border cursor-pointer transition-all duration-200 ${attendance === 'Joyfully Attending'
                         ? 'border-[#8C4A15] bg-[#FAF0DC] text-[#381F0D] font-bold shadow-xs'
                         : 'border-[#C68A4C]/35 bg-[#FFFDF8] text-[#5C3B24] hover:border-[#8C4A15]/60'
-                    }`}
+                      }`}
                   >
                     <input
                       type="radio"
@@ -255,15 +256,17 @@ export const RSVPSection: React.FC = () => {
                       onChange={() => setAttendance('Joyfully Attending')}
                       className="accent-[#8C4A15] w-4 h-4"
                     />
-                    <span className="text-xs sm:text-sm font-tamil">மகிழ்ச்சியுடன் கலந்து கொள்கிறோம்</span>
+                    <div className="flex flex-col leading-tight">
+                      <span className="text-xs sm:text-sm font-semibold">Joyfully Attending</span>
+                      <span className="text-[11px] font-tamil text-[#7A3E10]">மகிழ்ச்சியுடன் கலந்து கொள்கிறோம்</span>
+                    </div>
                   </label>
 
                   <label
-                    className={`flex items-center gap-3 p-3.5 rounded-xl border cursor-pointer transition-all duration-200 ${
-                      attendance === 'Regretfully Declining'
+                    className={`flex items-center gap-3 p-3.5 rounded-xl border cursor-pointer transition-all duration-200 ${attendance === 'Regretfully Declining'
                         ? 'border-[#8C4A15] bg-[#FAF0DC] text-[#381F0D] font-bold shadow-xs'
                         : 'border-[#C68A4C]/35 bg-[#FFFDF8] text-[#5C3B24] hover:border-[#8C4A15]/60'
-                    }`}
+                      }`}
                   >
                     <input
                       type="radio"
@@ -273,23 +276,26 @@ export const RSVPSection: React.FC = () => {
                       onChange={() => setAttendance('Regretfully Declining')}
                       className="accent-[#8C4A15] w-4 h-4"
                     />
-                    <span className="text-xs sm:text-sm font-tamil">வாழ்த்துகளுடன் கலந்து கொள்ள இயலாமைக்கு வருந்துகிறோம்</span>
+                    <div className="flex flex-col leading-tight">
+                      <span className="text-xs sm:text-sm font-semibold">Regretfully Declining</span>
+                      <span className="text-[11px] font-tamil text-[#7A3E10]">வாழ்த்துகளுடன் கலந்து கொள்ள இயலாமைக்கு வருந்துகிறோம்</span>
+                    </div>
                   </label>
                 </div>
               </div>
 
               {/* Optional Note */}
               <div>
-                <label htmlFor="rsvp-notes" className="block text-xs uppercase tracking-wider text-[#381F0D] font-bold mb-1.5 font-tamil">
-                  மணமக்களுக்கு நல்வாழ்த்துகள் / குறிப்பு (விருப்பப்பட்டால்)
+                <label htmlFor="rsvp-notes" className="block text-xs uppercase tracking-wider text-[#381F0D] font-bold mb-1.5 font-sans">
+                  Warm Wishes / Notes for the Couple (Optional)
                 </label>
                 <textarea
                   id="rsvp-notes"
                   rows={2}
                   value={notes}
                   onChange={(e) => setNotes(e.target.value)}
-                  placeholder="உங்கள் அன்பான வாழ்த்துச் செய்தி..."
-                  className="w-full px-4 py-2.5 rounded-xl border border-[#C68A4C]/50 focus:border-[#8C4A15] outline-none text-[#381F0D] placeholder-[#8C6B52]/50 text-sm transition-colors bg-[#FFFDF9] font-tamil font-medium shadow-2xs"
+                  placeholder="Leave your heartfelt wishes..."
+                  className="w-full px-4 py-2.5 rounded-xl border border-[#C68A4C]/50 focus:border-[#8C4A15] outline-none text-[#381F0D] placeholder-[#8C6B52]/50 text-sm transition-colors bg-[#FFFDF9] font-medium shadow-2xs"
                 />
               </div>
 
@@ -298,19 +304,19 @@ export const RSVPSection: React.FC = () => {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full flex items-center justify-center gap-2 py-3.5 px-6 rounded-xl bg-gradient-to-r from-[#8C4A15] via-[#A85D1E] to-[#7A3E10] hover:brightness-105 text-[#FFFDF8] font-bold text-sm sm:text-base uppercase tracking-wider transition-all duration-300 shadow-lg hover:shadow-xl group disabled:opacity-70 disabled:cursor-not-allowed font-tamil"
+                  className="w-full flex items-center justify-center gap-2 py-3.5 px-6 rounded-xl bg-gradient-to-r from-[#8C4A15] via-[#A85D1E] to-[#7A3E10] hover:brightness-105 text-[#FFFDF8] font-bold text-sm sm:text-base uppercase tracking-wider transition-all duration-300 shadow-lg hover:shadow-xl group disabled:opacity-70 disabled:cursor-not-allowed font-sans"
                 >
                   {loading ? (
                     <>
                       <Loader2 className="w-4 h-4 animate-spin text-[#FFFDF8]" />
-                      <span>பதிவாகிறது...</span>
+                      <span>Submitting RSVP...</span>
                     </>
                   ) : (
                     <>
                       <div className="flex flex-col items-center leading-tight">
-                        <span>வருகையை உறுதி செய்க</span>
-                        <span className="font-cormorant text-[11px] uppercase tracking-widest text-[#FAF0DC] font-bold">
-                          Submit RSVP
+                        <span className="font-bold">Confirm RSVP</span>
+                        <span className="font-tamil text-[10px] text-[#FAF0DC] font-normal">
+                          (வருகையை உறுதி செய்க)
                         </span>
                       </div>
                       <Send className="w-4 h-4 text-[#FFFDF8] group-hover:translate-x-1 transition-transform" />
@@ -322,7 +328,7 @@ export const RSVPSection: React.FC = () => {
                 {targetPhone && (
                   <a
                     href={createWhatsAppRsvpUrl(targetPhone, {
-                      familyName: familyName || 'குடும்பத்தினர்',
+                      familyName: familyName || 'Family',
                       whatsapp: whatsapp || '-',
                       attendance,
                       guestCount,
@@ -330,10 +336,10 @@ export const RSVPSection: React.FC = () => {
                     })}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full flex items-center justify-center gap-2 py-3 px-6 rounded-xl border border-[#25D366]/60 bg-[#25D366]/15 hover:bg-[#25D366]/25 text-[#1b6b33] font-bold text-xs sm:text-sm uppercase tracking-wider transition-all font-tamil shadow-xs"
+                    className="w-full flex items-center justify-center gap-2 py-3 px-6 rounded-xl border border-[#25D366]/60 bg-[#25D366]/15 hover:bg-[#25D366]/25 text-[#1b6b33] font-bold text-xs sm:text-sm uppercase tracking-wider transition-all shadow-xs"
                   >
                     <MessageSquareShare className="w-4 h-4 text-[#25D366]" />
-                    <span>வாட்ஸ்அப் மூலம் உடனடியாக அனுப்ப</span>
+                    <span>Send RSVP Directly via WhatsApp</span>
                   </a>
                 )}
               </div>

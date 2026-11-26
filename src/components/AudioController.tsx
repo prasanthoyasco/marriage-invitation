@@ -92,11 +92,10 @@ export const AudioController: React.FC<AudioControllerProps> = ({ autoPlayTrigge
           onClick={toggleAudio}
           aria-label={isPlaying ? 'இசையை நிறுத்த' : 'இசையை ஒலிக்க'}
           title={isPlaying ? 'இசையை நிறுத்த' : 'இசையை ஒலிக்க'}
-          className={`relative group flex items-center justify-center w-14 h-14 rounded-full backdrop-blur-md transition-all duration-300 shadow-xl border ${
-            isPlaying
+          className={`relative group flex items-center justify-center w-14 h-14 rounded-full backdrop-blur-md transition-all duration-300 shadow-xl border ${isPlaying
               ? 'bg-[#FFFDF8] border-2 border-[#C68A4C] text-[#8C4A15] ring-2 ring-[#C68A4C]/40 shadow-[#C68A4C]/30'
               : 'bg-[#FAF0DC] border border-[#C68A4C]/60 text-[#5C2D0C] hover:text-[#381F0D]'
-          }`}
+            }`}
         >
           {isPlaying ? (
             <>

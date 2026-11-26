@@ -7,11 +7,14 @@ export const CountdownSection: React.FC = () => {
   const countdown = useCountdown(weddingConfig.dates.wedding);
 
   const units = [
-    { label: 'நாட்கள்', subLabel: 'DAYS', value: countdown.formatted.days },
-    { label: 'மணி', subLabel: 'HOURS', value: countdown.formatted.hours },
-    { label: 'நிமிடங்கள்', subLabel: 'MINS', value: countdown.formatted.minutes },
-    { label: 'நொடிகள்', subLabel: 'SECS', value: countdown.formatted.seconds },
+    { label: 'Days', subLabel: 'DAYS', value: countdown.formatted.days },
+    { label: 'Hours', subLabel: 'HOURS', value: countdown.formatted.hours },
+    { label: 'Minutes', subLabel: 'MINS', value: countdown.formatted.minutes },
+    { label: 'Seconds', subLabel: 'SECS', value: countdown.formatted.seconds },
   ];
+
+  const weddingDateStr =
+    weddingConfig.dates.displayWeddingDate || 'Monday, 8th February 2027';
 
   return (
     <section className="py-20 sm:py-28 px-4 bg-transparent relative border-y border-[#D4AF37]/30 overflow-hidden">
@@ -29,15 +32,12 @@ export const CountdownSection: React.FC = () => {
           className="mb-12 sm:mb-16"
         >
           <div className="mb-2 flex flex-col items-center">
-            <span className="font-tamil text-base sm:text-lg text-[#7A3E10] font-semibold block">
-              சுபமுகூர்த்த கவுண்டவுன்
-            </span>
-            <span className="font-cormorant text-xs sm:text-sm text-[#8C4A15] font-bold uppercase tracking-widest mt-0.5 block">
+            <span className="font-cormorant text-xs sm:text-sm text-[#8C4A15] font-bold uppercase tracking-widest block">
               Auspicious Countdown
             </span>
           </div>
           <h2 className="font-cinzel text-2xl sm:text-4xl md:text-5xl text-[#381F0D] font-bold tracking-wider drop-shadow-sm">
-            இணைந்திடும் சுபமுகூர்த்த நன்னாளை நோக்கி
+            Counting Down to the <br/> Wedding Day
           </h2>
           <div className="flex items-center justify-center gap-3 w-32 mx-auto mt-4 opacity-70">
             <div className="h-[1px] flex-1 bg-[#C68A4C]" />
@@ -66,26 +66,23 @@ export const CountdownSection: React.FC = () => {
                 {unit.value}
               </div>
 
-              {/* Tamil Label */}
-              <span className="text-sm sm:text-base font-tamil uppercase font-bold text-[#5C2D0C] mt-2">
+              {/* Label */}
+              <span className="text-xs sm:text-sm font-cinzel uppercase font-bold tracking-widest text-[#5C2D0C] mt-2">
                 {unit.label}
-              </span>
-              <span className="text-[10px] font-mono tracking-widest text-[#8C6B52] uppercase font-medium">
-                {unit.subLabel}
               </span>
             </motion.div>
           ))}
         </div>
 
-        {/* Dynamic Wedding Date Note in Tamil */}
+        {/* Dynamic Wedding Date Note in English */}
         <motion.p
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.5, duration: 0.8 }}
-          className="mt-10 font-tamil text-base sm:text-lg text-[#5C3B24] font-medium"
+          className="mt-10 font-cormorant text-lg sm:text-xl text-[#5C3B24] font-medium tracking-wide"
         >
-          {weddingConfig.dates.displayTamilDate || weddingConfig.dates.displayWeddingDate} அன்று நடைபெறும் சுபமுகூர்த்த நன்னாளை எதிர்நோக்கி...
+          Looking forward to the auspicious wedding ceremony on {weddingDateStr}...
         </motion.p>
       </div>
     </section>

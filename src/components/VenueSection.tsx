@@ -18,16 +18,19 @@ export const VenueSection: React.FC = () => {
           className="text-center mb-16 sm:mb-20"
         >
           <div className="mb-2 flex flex-col items-center">
-            <span className="font-tamil text-base sm:text-lg text-[#7A3E10] font-semibold block">
-              திருமணத் திருத்தலம்
-            </span>
-            <span className="font-cormorant text-xs sm:text-sm text-[#8C4A15] font-bold uppercase tracking-widest mt-0.5 block">
+            <span className="font-cormorant text-xs sm:text-sm text-[#8C4A15] font-bold uppercase tracking-widest block">
               Wedding Venue
+            </span>
+            <span className="font-tamil text-sm sm:text-base text-[#7A3E10] font-semibold block mt-0.5">
+              திருமணத் திருத்தலம்
             </span>
           </div>
           <h2 className="font-cinzel text-3xl sm:text-5xl text-[#381F0D] font-bold tracking-wide uppercase drop-shadow-sm">
-            திருமண மண்டப முகவரி
+            Venue & Location Details
           </h2>
+          <span className="font-tamil text-xs sm:text-sm text-[#7A3E10] font-medium block mt-1">
+            திருமண மண்டப முகவரி
+          </span>
           <div className="flex items-center justify-center gap-3 w-32 mx-auto mt-4 opacity-60">
             <div className="h-[1px] flex-1 bg-gradient-to-r from-transparent to-[#C68A4C]" />
             <span className="text-[#8C4A15] text-xs">❖</span>
@@ -54,11 +57,11 @@ export const VenueSection: React.FC = () => {
 
               <div>
                 <div className="mb-2 flex flex-col">
-                  <span className="text-xs uppercase tracking-[0.2em] font-tamil text-[#8C4A15] font-bold block">
-                    திருமண மஹால்
+                  <span className="text-[11px] uppercase tracking-[0.25em] font-cormorant text-[#8C4A15] font-bold block">
+                    Wedding Venue & Kalyana Mandapam
                   </span>
-                  <span className="text-[11px] uppercase tracking-[0.25em] font-cormorant text-[#7A3E10] font-bold block">
-                    Wedding Venue
+                  <span className="text-xs uppercase tracking-wider font-tamil text-[#7A3E10] font-medium block">
+                    திருமண மஹால்
                   </span>
                 </div>
                 <h3 className="font-cinzel text-2xl sm:text-3xl text-[#381F0D] font-bold mb-3">
@@ -66,9 +69,14 @@ export const VenueSection: React.FC = () => {
                 </h3>
                 <div className="flex items-start gap-3 mt-5 mb-8">
                   <MapPin className="w-5 h-5 text-[#8C4A15] flex-shrink-0 mt-0.5" />
-                  <p className="font-tamil text-sm sm:text-base leading-relaxed text-[#5C3B24] font-medium">
-                    {venue.address}
-                  </p>
+                  <div>
+                    <p className="text-sm sm:text-base leading-relaxed text-[#381F0D] font-semibold">
+                      {venue.address}
+                    </p>
+                    <p className="font-tamil text-xs text-[#7A3E10] mt-1 font-medium">
+                      ஸ்ரீ ரங்கநாயகி கல்யாண மண்டபம், நங்கநல்லூர், சென்னை
+                    </p>
+                  </div>
                 </div>
               </div>
 
@@ -77,13 +85,13 @@ export const VenueSection: React.FC = () => {
                   href={venue.mapsUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full inline-flex items-center justify-center gap-2.5 py-3.5 px-6 rounded-xl border border-[#C68A4C] bg-gradient-to-r from-[#8C4A15] via-[#A85D1E] to-[#7A3E10] hover:brightness-105 text-[#FFFDF8] font-bold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 shadow-lg group hover:shadow-xl transform hover:-translate-y-0.5 font-tamil"
+                  className="w-full inline-flex items-center justify-center gap-2.5 py-3.5 px-6 rounded-xl border border-[#C68A4C] bg-gradient-to-r from-[#8C4A15] via-[#A85D1E] to-[#7A3E10] hover:brightness-105 text-[#FFFDF8] font-bold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 shadow-lg group hover:shadow-xl transform hover:-translate-y-0.5"
                 >
                   <Navigation className="w-4 h-4 text-[#FFFDF8] group-hover:scale-110 transition-transform" />
                   <div className="flex flex-col items-center leading-tight">
-                    <span>வரைபடத்தில் பார்க்க</span>
-                    <span className="font-cormorant text-[11px] uppercase tracking-wider text-[#FAF0DC] font-bold">
-                      Open in Google Maps
+                    <span className="font-cinzel text-xs sm:text-sm tracking-wider">Open in Google Maps</span>
+                    <span className="font-tamil text-[10px] text-[#FAF0DC]/80 font-normal">
+                      வரைபடத்தில் பார்க்க
                     </span>
                   </div>
                 </a>

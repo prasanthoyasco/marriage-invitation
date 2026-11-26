@@ -21,17 +21,22 @@ export const Footer: React.FC = () => {
         {/* Couple Title */}
         <div className="flex flex-col items-center mb-2">
           <h3 className="font-cinzel text-2xl sm:text-3xl tracking-widest text-[#381F0D] uppercase font-bold">
-            {couple.tamilTitle || footer.title}
+            {footer.title || couple.title}
           </h3>
           <span className="font-cormorant text-xs sm:text-sm tracking-[0.25em] text-[#8C4A15] uppercase font-bold mt-0.5">
-            Madhuprasad Weds Priyadharshini
+            Madhuprasath Weds Priyadharshini
           </span>
         </div>
 
-        {/* Tamil Blessing */}
-        <p className="font-tamil text-base text-[#5C3B24] mb-2 font-semibold tracking-wide">
-          வாழ்க வளமுடன் • அன்பும் அருளும் நிறையட்டும்
-        </p>
+        {/* Wedding Blessing */}
+        <div className="flex flex-col items-center mb-3">
+          <p className="font-cormorant text-base sm:text-lg text-[#381F0D] font-bold tracking-wider">
+            Wishing the Couple a Lifetime of Love & Happiness
+          </p>
+          <p className="font-tamil text-xs sm:text-sm text-[#7A3E10] mt-0.5 font-medium tracking-wide">
+            வாழ்க வளமுடன் • அன்பும் அருளும் நிறையட்டும்
+          </p>
+        </div>
 
         {/* Date */}
         <p className="font-mono text-xs sm:text-sm text-[#8C4A15] tracking-[0.25em] uppercase mb-6 font-bold">
@@ -46,7 +51,7 @@ export const Footer: React.FC = () => {
         </div>
 
         {/* Credits */}
-        <div className="text-xs text-[#5C3B24]/80 flex items-center justify-center gap-1.5 font-tamil tracking-wide font-medium">
+        <div className="text-xs text-[#5C3B24]/80 flex items-center justify-center gap-1.5 tracking-wide font-medium">
           <span>{footer.creditText}</span>
           {footer.creditLink && (
             <a

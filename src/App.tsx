@@ -70,7 +70,7 @@ export function App() {
         <ContactAjaySection />
 
         {/* Family, Best Compliments & Little Flowers */}
-        <FamilySection />
+        {/* <FamilySection /> */}
 
         {/* Wedding Venues & Google Maps */}
         <VenueSection />

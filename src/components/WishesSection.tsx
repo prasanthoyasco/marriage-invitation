@@ -113,9 +113,8 @@ export const WishesSection: React.FC = () => {
               type="button"
               onClick={() => setCurrentIndex(idx)}
               aria-label={`Go to wish ${idx + 1}`}
-              className={`h-2 rounded-full transition-all duration-300 ${
-                idx === currentIndex ? 'w-8 bg-[#D4AF37]' : 'w-2 bg-[#D4AF37]/35 hover:bg-[#D4AF37]/65'
-              }`}
+              className={`h-2 rounded-full transition-all duration-300 ${idx === currentIndex ? 'w-8 bg-[#D4AF37]' : 'w-2 bg-[#D4AF37]/35 hover:bg-[#D4AF37]/65'
+                }`}
             />
           ))}
         </div>

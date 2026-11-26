@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Sparkles, Eye, X, Film, RotateCw } from 'lucide-react';
+import { Sparkles, Eye, X, Film, RotateCw, Play } from 'lucide-react';
+import ReactPlayer from 'react-player';
 import { weddingConfig } from '../config/wedding';
 import { FloatingPetals } from './ui/FloatingPetals';
 
@@ -8,6 +9,7 @@ export const HeroSection: React.FC = () => {
   const { couple, invocation, dates } = weddingConfig;
   const [showLightbox, setShowLightbox] = useState(false);
   const [showAnimeModal, setShowAnimeModal] = useState(false);
+  const [showVideoModal, setShowVideoModal] = useState(false);
   const [isFlipped, setIsFlipped] = useState(false);
 
   const frontCardImage = '/assets/images/invitation-card.jpg';
@@ -388,6 +390,30 @@ export const HeroSection: React.FC = () => {
                 : 'வலப்புறம் இழுக்க அல்லது தொட, பின் பக்கம் திரும்பும் ➔'}
             </p>
           </div>
+
+          {/* Little Video Button below Invitation Card */}
+          <div className="mt-5 flex justify-center">
+            <motion.button
+              type="button"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => setShowVideoModal(true)}
+              className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full border border-[#C68A4C] bg-gradient-to-r from-[#8C4A15] via-[#A85D1E] to-[#7A3E10] hover:brightness-105 text-[#FFFDF8] shadow-md transition-all duration-300 group cursor-pointer"
+              title="Watch Couple Video"
+            >
+              <span className="w-7 h-7 rounded-full bg-[#FAF0DC] text-[#8C4A15] flex items-center justify-center group-hover:scale-110 transition-transform shadow-xs">
+                <Play className="w-3.5 h-3.5 fill-current ml-0.5" />
+              </span>
+              <div className="flex flex-col text-left leading-tight pr-1">
+                <span className="font-cinzel text-xs font-bold tracking-wider uppercase">
+                  Watch Couple Video
+                </span>
+                <span className="font-tamil text-[10px] text-[#FAF0DC]/85 font-normal">
+                  மணமக்கள் வீடியோ பதிவு
+                </span>
+              </div>
+            </motion.button>
+          </div>
         </motion.div>
       </div>
 
@@ -485,6 +511,68 @@ export const HeroSection: React.FC = () => {
               <p className="font-tamil text-xs text-center text-[#7A4B22] mt-3">
                 (இருவரும் ஒருவரை ஒருவர் அன்புடன் பார்க்கும் 3-5 நொடி அனிமேஷன் பதிவு)
               </p>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Couple Video Player Modal (ReactPlayer) */}
+      <AnimatePresence>
+        {showVideoModal && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 p-3 sm:p-6 backdrop-blur-md"
+            onClick={() => setShowVideoModal(false)}
+          >
+            <div
+              className="relative max-w-3xl w-full bg-[#FFFDF8] rounded-3xl border-2 border-[#C68A4C] overflow-hidden shadow-2xl p-4 sm:p-6"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Header */}
+              <div className="flex items-center justify-between pb-3 px-1 border-b border-[#C68A4C]/30">
+                <div className="flex items-center gap-2.5">
+                  <div className="w-8 h-8 rounded-full bg-[#FAF0DC] border border-[#C68A4C] text-[#8C4A15] flex items-center justify-center shadow-xs">
+                    <Film className="w-4 h-4" />
+                  </div>
+                  <div className="flex flex-col text-left">
+                    <span className="font-cinzel text-sm sm:text-base text-[#381F0D] font-bold tracking-wide">
+                      Couple Dance & Celebration
+                    </span>
+                    <span className="font-tamil text-xs text-[#8C4A15] font-medium">
+                      மணமக்கள் நடனம் & கொண்டாட்டம்
+                    </span>
+                  </div>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setShowVideoModal(false)}
+                  className="w-9 h-9 rounded-full bg-[#FAF0DC] hover:bg-[#C68A4C] hover:text-[#FFFDF8] border border-[#C68A4C]/60 text-[#5C2D0C] flex items-center justify-center transition-colors shadow-sm cursor-pointer"
+                  aria-label="Close video"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+
+              {/* ReactPlayer Container */}
+              <div className="aspect-video w-full rounded-2xl overflow-hidden mt-4 bg-black shadow-inner relative flex items-center justify-center">
+                <ReactPlayer
+                  src="/assets/video/coupledance.mp4"
+                  playing={true}
+                  controls={true}
+                  width="100%"
+                  height="100%"
+                  playsInline
+                />
+              </div>
+
+              {/* Subtitle / Footer */}
+              <div className="mt-3 text-center">
+                <p className="font-cormorant text-xs sm:text-sm text-[#7A3E10] font-semibold tracking-wider">
+                  Madhuprasath & Priyadharshini • Special Moments
+                </p>
+              </div>
             </div>
           </motion.div>
         )}

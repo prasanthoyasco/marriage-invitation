@@ -69,11 +69,12 @@ export const CoupleSection: React.FC = () => {
             className="md:col-span-5 bg-[#FFFDF8]/95 backdrop-blur-md p-8 sm:p-10 rounded-2xl shadow-[0_15px_35px_rgba(74,36,10,0.1)] border-2 border-[#C68A4C]/60 text-center relative wedding-card"
           >
             <div className="mb-2 flex flex-col items-center">
-              <span className="text-xs uppercase tracking-[0.2em] text-[#8C4A15] font-bold block font-tamil">
-                {couple.groom.labelTamil || "மாப்பிள்ளை"}
-              </span>
-              <span className="text-[11px] uppercase tracking-[0.25em] text-[#7A3E10] font-semibold block font-cormorant">
+
+              <span className="text-xs uppercase tracking-[0.25em] text-[#7A3E10] font-semibold block font-cormorant">
                 The Groom
+              </span>
+              <span className="text-[11px] uppercase tracking-[0.2em] text-[#8C4A15] font-bold block font-tamil">
+                {couple.groom.labelTamil || "மாப்பிள்ளை"}
               </span>
             </div>
             <h3 className="font-cinzel text-2xl sm:text-3xl text-[#381F0D] font-bold">
@@ -84,14 +85,14 @@ export const CoupleSection: React.FC = () => {
                 {couple.groom.nameTransliteration}
               </p>
             )}
-            <div className="w-14 h-[1px] bg-[#C68A4C]/60 mx-auto my-3" />
-            <p className="font-tamil text-sm sm:text-base text-[#5C3B24] font-medium leading-relaxed">
+            {/* <div className="w-14 h-[1px] bg-[#C68A4C]/60 mx-auto my-3" /> */}
+            {/* <p className="font-tamil text-sm sm:text-base text-[#5C3B24] font-medium leading-relaxed">
               பெற்றோர்
               <br />
               <span className="font-semibold text-[#381F0D]">
                 {couple.groom.parents.mother} & {couple.groom.parents.father}
               </span>
-            </p>
+            </p> */}
           </motion.div>
 
           {/* "With" Calligraphic Connector */}
@@ -116,11 +117,12 @@ export const CoupleSection: React.FC = () => {
             className="md:col-span-5 bg-[#FFFDF8]/95 backdrop-blur-md p-8 sm:p-10 rounded-2xl shadow-[0_15px_35px_rgba(74,36,10,0.1)] border-2 border-[#C68A4C]/60 text-center relative wedding-card"
           >
             <div className="mb-2 flex flex-col items-center">
-              <span className="text-xs uppercase tracking-[0.2em] text-[#8C4A15] font-bold block font-tamil">
-                {couple.bride.labelTamil || "மணப்பெண்"}
-              </span>
-              <span className="text-[11px] uppercase tracking-[0.25em] text-[#7A3E10] font-semibold block font-cormorant">
+
+              <span className="text-xs uppercase tracking-[0.25em] text-[#7A3E10] font-semibold block font-cormorant">
                 The Bride
+              </span>
+              <span className="text-[11px] uppercase tracking-[0.2em] text-[#8C4A15] font-bold block font-tamil">
+                {couple.bride.labelTamil || "மணப்பெண்"}
               </span>
             </div>
             <h3 className="font-cinzel text-2xl sm:text-3xl text-[#381F0D] font-bold">
@@ -131,14 +133,14 @@ export const CoupleSection: React.FC = () => {
                 {couple.bride.nameTransliteration}
               </p>
             )}
-            <div className="w-14 h-[1px] bg-[#C68A4C]/60 mx-auto my-3" />
-            <p className="font-tamil text-sm sm:text-base text-[#5C3B24] font-medium leading-relaxed">
+            {/* <div className="w-14 h-[1px] bg-[#C68A4C]/60 mx-auto my-3" /> */}
+            {/* <p className="font-tamil text-sm sm:text-base text-[#5C3B24] font-medium leading-relaxed">
               பெற்றோர்
               <br />
               <span className="font-semibold text-[#381F0D]">
                 {couple.bride.parents.mother} & {couple.bride.parents.father}
               </span>
-            </p>
+            </p> */}
           </motion.div>
         </div>
       </div>

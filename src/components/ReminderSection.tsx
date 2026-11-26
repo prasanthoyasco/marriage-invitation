@@ -28,36 +28,43 @@ export const ReminderSection: React.FC = () => {
           </div>
 
           <div className="mb-3 flex flex-col items-center">
-            <span className="font-tamil text-sm sm:text-base text-[#7A3E10] font-semibold block">
-              நாட்காட்டியில் நினைவூட்டல் சேர்க்க
-            </span>
-            <span className="font-cormorant text-xs sm:text-sm text-[#8C4A15] font-bold uppercase tracking-widest mt-0.5 block">
+            <span className="font-cormorant text-xs sm:text-sm text-[#8C4A15] font-bold uppercase tracking-widest block">
               Save The Date
+            </span>
+            <span className="font-tamil text-xs sm:text-sm text-[#7A3E10] font-medium block mt-0.5">
+              நாட்காட்டியில் நினைவூட்டல் சேர்க்க
             </span>
           </div>
 
-          <h2 className="font-cinzel text-2xl sm:text-4xl text-[#381F0D] font-bold tracking-wide uppercase mb-4">
-            {reminder.tamilTitle || reminder.title}
+          <h2 className="font-cinzel text-2xl sm:text-4xl text-[#381F0D] font-bold tracking-wide uppercase mb-2">
+            {reminder.title || 'Add to Your Calendar'}
           </h2>
+          <span className="font-tamil text-xs sm:text-sm text-[#7A3E10] font-medium block mb-4">
+            நிகழ்வு நினைவூட்டலை உங்கள் நாட்காட்டியில் சேர்க்கவும்
+          </span>
 
-          <p className="font-tamil text-sm sm:text-lg text-[#5C3B24] mb-6 max-w-lg mx-auto leading-relaxed font-medium">
+          <p className="text-sm sm:text-base text-[#5C3B24] mb-2 max-w-lg mx-auto leading-relaxed font-medium">
             {reminder.subtitle}
+          </p>
+          <p className="font-tamil text-xs text-[#7A3E10] mb-6 max-w-lg mx-auto leading-relaxed">
+            தங்கள் வருகை எங்கள் திருமண நன்னாளை முழுமையாக்கும்.
           </p>
 
           {/* Dual Notification Reminder Highlights */}
-          <div className="inline-flex flex-wrap items-center justify-center gap-2 sm:gap-4 p-3 rounded-2xl bg-[#FAF0DC] border border-[#C68A4C]/50 mb-8 text-xs sm:text-sm font-tamil text-[#5C2D0C]">
+          <div className="inline-flex flex-wrap items-center justify-center gap-2 sm:gap-4 p-3 rounded-2xl bg-[#FAF0DC] border border-[#C68A4C]/50 mb-8 text-xs sm:text-sm text-[#5C2D0C]">
             <div className="flex items-center gap-1.5 font-bold">
               <Clock className="w-4 h-4 text-[#8C4A15]" />
-              <span>தானியங்கி நினைவூட்டல்:</span>
+              <span>Automated Reminder:</span>
+              <span className="font-tamil text-[11px] text-[#7A3E10] font-normal">(தானியங்கி)</span>
             </div>
             <span className="px-3 py-1 rounded-xl bg-[#FFFDF8] border border-[#C68A4C]/60 font-bold flex flex-col items-center leading-tight shadow-xs">
-              <span className="text-[#381F0D]">1 வாரத்திற்கு முன்</span>
-              <span className="text-[10px] text-[#7A3E10] font-bold uppercase tracking-wider">1 Week Before</span>
+              <span className="text-[#381F0D]">1 Week Before</span>
+              <span className="font-tamil text-[10px] text-[#7A3E10] font-normal">1 வாரத்திற்கு முன்</span>
             </span>
             <span className="text-[#8C4A15] font-bold">&</span>
             <span className="px-3 py-1 rounded-xl bg-[#FFFDF8] border border-[#C68A4C]/60 font-bold flex flex-col items-center leading-tight shadow-xs">
-              <span className="text-[#381F0D]">1 மணி நேரத்திற்கு முன்</span>
-              <span className="text-[10px] text-[#7A3E10] font-bold uppercase tracking-wider">1 Hour Before</span>
+              <span className="text-[#381F0D]">1 Hour Before</span>
+              <span className="font-tamil text-[10px] text-[#7A3E10] font-normal">1 மணி நேரத்திற்கு முன்</span>
             </span>
           </div>
 
@@ -68,13 +75,13 @@ export const ReminderSection: React.FC = () => {
               href={calendarUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-3 rounded-xl border border-[#C68A4C] bg-gradient-to-r from-[#8C4A15] via-[#A85D1E] to-[#7A3E10] hover:brightness-105 text-[#FFFDF8] font-bold uppercase transition-all duration-300 shadow-lg group font-tamil"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-3 rounded-xl border border-[#C68A4C] bg-gradient-to-r from-[#8C4A15] via-[#A85D1E] to-[#7A3E10] hover:brightness-105 text-[#FFFDF8] font-bold uppercase transition-all duration-300 shadow-lg group"
             >
               <Calendar className="w-4 h-4 text-[#FFFDF8] group-hover:scale-110 transition-transform" />
               <div className="flex flex-col items-center leading-tight">
-                <span className="text-xs sm:text-sm">நாட்காட்டியில் சேர்க்க</span>
-                <span className="font-cormorant text-[11px] uppercase tracking-wider text-[#FAF0DC] font-bold">
-                  Add to Google Calendar
+                <span className="text-xs sm:text-sm font-semibold">Add to Google Calendar</span>
+                <span className="font-tamil text-[10px] text-[#FAF0DC]/80 font-normal">
+                  நாட்காட்டியில் சேர்க்க
                 </span>
               </div>
             </a>
@@ -83,19 +90,19 @@ export const ReminderSection: React.FC = () => {
             <button
               type="button"
               onClick={handleDownloadIcs}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-3 rounded-xl border-2 border-[#C68A4C] bg-[#FAF0DC] hover:bg-[#F5E6CC] text-[#381F0D] font-bold uppercase transition-all duration-300 shadow-md font-tamil"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-3 rounded-xl border-2 border-[#C68A4C] bg-[#FAF0DC] hover:bg-[#F5E6CC] text-[#381F0D] font-bold uppercase transition-all duration-300 shadow-md"
             >
               <Download className="w-4 h-4 text-[#8C4A15]" />
               <div className="flex flex-col items-center leading-tight">
-                <span className="text-xs sm:text-sm">நாட்காட்டி கோப்பு (.ics)</span>
-                <span className="font-cormorant text-[11px] uppercase tracking-wider text-[#8C4A15] font-bold">
-                  Apple / Phone Calendar
+                <span className="text-xs sm:text-sm font-semibold text-[#381F0D]">Apple / Phone Calendar (.ics)</span>
+                <span className="font-tamil text-[10px] text-[#8C4A15]/80 font-normal">
+                  நாட்காட்டி கோப்பு (.ics)
                 </span>
               </div>
             </button>
           </div>
 
-          <p className="font-tamil text-xs sm:text-sm text-[#5C3B24] max-w-md mx-auto leading-relaxed font-medium">
+          <p className="text-xs sm:text-sm text-[#5C3B24] max-w-md mx-auto leading-relaxed font-medium">
             {reminder.instruction}
           </p>
 

@@ -46,11 +46,10 @@ export const TamilSloganSection: React.FC = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.15 + idx * 0.08, duration: 0.7 }}
-                  className={`font-tamil tracking-wide transition-all duration-300 ${
-                    isHighlight
+                  className={`font-tamil tracking-wide transition-all duration-300 ${isHighlight
                       ? 'text-2xl sm:text-3xl md:text-4xl text-[#7A2508] font-bold drop-shadow-sm'
                       : 'text-lg sm:text-2xl md:text-3xl text-[#381F0D] font-medium leading-relaxed'
-                  }`}
+                    }`}
                 >
                   "{line}"
                 </motion.p>

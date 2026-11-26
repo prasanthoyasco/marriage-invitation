@@ -85,9 +85,7 @@ export const AjayHanumanSection: React.FC = () => {
                 <h4 className="font-cinzel text-xl text-[#381F0D] font-bold mb-2">
                   ஸ்ரீ அனுமன் நெஞ்சில் தம்பதியர்
                 </h4>
-                <p className="font-tamil text-xs text-[#5C3B24] max-w-xs leading-relaxed font-medium">
-                  (அஜய் அனுமன் தோற்றப் படம் /assets/images/ajay-hanuman.jpg கோப்பிலிருந்து தானாகவே இங்கு காண்பிக்கப்படும்)
-                </p>
+
               </div>
 
               {/* Overlay Vignette */}
@@ -104,7 +102,7 @@ export const AjayHanumanSection: React.FC = () => {
           </div>
 
           {/* Devotional Stanza / Blessings Text */}
-          <div className="mt-8 max-w-2xl mx-auto space-y-4">
+          {/* <div className="mt-8 max-w-2xl mx-auto space-y-4">
             <p className="font-tamil text-base sm:text-lg md:text-xl text-[#381F0D] font-semibold leading-relaxed drop-shadow-sm">
               "{devotionalBlessing.caption}"
             </p>
@@ -114,7 +112,7 @@ export const AjayHanumanSection: React.FC = () => {
                 {devotionalBlessing.tamilVerse}
               </p>
             )}
-          </div>
+          </div> */}
 
           {/* Golden Corner Ornaments */}
           <div className="absolute top-3 left-3 text-[#C68A4C]/50 text-sm select-none">❖</div>
