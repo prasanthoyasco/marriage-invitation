@@ -1,21 +1,48 @@
 import React, { useState, useRef } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Sparkles, Eye, X, Film, RotateCw, Play } from 'lucide-react';
+import { motion, AnimatePresence, Variants } from 'framer-motion';
+import { Sparkles, Eye, X, Film, Play, ChevronLeft, ChevronRight } from 'lucide-react';
 import ReactPlayer from 'react-player';
 import { weddingConfig } from '../config/wedding';
 import { FloatingPetals } from './ui/FloatingPetals';
+
+const galleryImages = [
+  {
+    src: '/assets/gallary/engagement-portrait.png',
+    title: 'Engagement Portrait',
+    tamilTitle: 'நிச்சயதார்த்த தருணம்',
+  },
+  {
+    src: '/assets/gallary/engagement-selfie.png',
+    title: 'Cherished Moments',
+    tamilTitle: 'மகிழ்ச்சியான தருணங்கள்',
+  },
+  {
+    src: '/assets/gallary/selfie-bikeride.png',
+    title: 'Sweet Journey Together',
+    tamilTitle: 'இனிமையான பயணம்',
+  },
+];
 
 export const HeroSection: React.FC = () => {
   const { couple, invocation, dates } = weddingConfig;
   const [showLightbox, setShowLightbox] = useState(false);
   const [showAnimeModal, setShowAnimeModal] = useState(false);
   const [showVideoModal, setShowVideoModal] = useState(false);
-  const [isFlipped, setIsFlipped] = useState(false);
+  const [currentGalleryIndex, setCurrentGalleryIndex] = useState(0);
+  const [galleryDirection, setGalleryDirection] = useState(0);
 
-  const frontCardImage = '/assets/images/invitation-card.jpg';
-  const backCardImage = '/assets/images/invitation-card-back.jpg';
-  const currentCardImage = isFlipped ? backCardImage : frontCardImage;
   const animeVideoSrc = couple.animeVideo || '/assets/images/couple-namaste.gif';
+
+  // Looping navigation functions
+  const nextGalleryImage = () => {
+    setGalleryDirection(1);
+    setCurrentGalleryIndex((prev) => (prev + 1) % galleryImages.length);
+  };
+
+  const prevGalleryImage = () => {
+    setGalleryDirection(-1);
+    setCurrentGalleryIndex((prev) => (prev - 1 + galleryImages.length) % galleryImages.length);
+  };
 
   // Swipe / Drag gesture tracking for mobile touch & desktop mouse
   const touchStartXRef = useRef<number | null>(null);
@@ -25,7 +52,7 @@ export const HeroSection: React.FC = () => {
   const mouseStartYRef = useRef<number | null>(null);
   const hasSwipedRef = useRef<boolean>(false);
 
-  const SWIPE_THRESHOLD = 45; // pixels needed to trigger 3D flip
+  const SWIPE_THRESHOLD = 35; // pixels needed to trigger slide
 
   // Touch handlers
   const handleTouchStart = (e: React.TouchEvent) => {
@@ -44,13 +71,13 @@ export const HeroSection: React.FC = () => {
     // Detect predominantly horizontal swipe
     if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > SWIPE_THRESHOLD) {
       if (!hasSwipedRef.current) {
-        if (deltaX > SWIPE_THRESHOLD && !isFlipped) {
-          // Swipe RIGHT -> flip to back (Page 2)
-          setIsFlipped(true);
+        if (deltaX < -SWIPE_THRESHOLD) {
+          // Swipe LEFT -> next image (looping)
+          nextGalleryImage();
           hasSwipedRef.current = true;
-        } else if (deltaX < -SWIPE_THRESHOLD && isFlipped) {
-          // Swipe LEFT -> flip back to front (Page 1)
-          setIsFlipped(false);
+        } else if (deltaX > SWIPE_THRESHOLD) {
+          // Swipe RIGHT -> prev image (looping)
+          prevGalleryImage();
           hasSwipedRef.current = true;
         }
       }
@@ -78,13 +105,11 @@ export const HeroSection: React.FC = () => {
 
     if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > SWIPE_THRESHOLD) {
       if (!hasSwipedRef.current) {
-        if (deltaX > SWIPE_THRESHOLD && !isFlipped) {
-          // Swipe RIGHT -> flip to back (Page 2)
-          setIsFlipped(true);
+        if (deltaX < -SWIPE_THRESHOLD) {
+          nextGalleryImage();
           hasSwipedRef.current = true;
-        } else if (deltaX < -SWIPE_THRESHOLD && isFlipped) {
-          // Swipe LEFT -> flip back to front (Page 1)
-          setIsFlipped(false);
+        } else if (deltaX > SWIPE_THRESHOLD) {
+          prevGalleryImage();
           hasSwipedRef.current = true;
         }
       }
@@ -98,18 +123,36 @@ export const HeroSection: React.FC = () => {
     hasSwipedRef.current = false;
   };
 
-  // Card click toggle (when clicked without significant dragging)
-  const handleCardClick = () => {
-    if (!hasSwipedRef.current) {
-      setIsFlipped((prev) => !prev);
-    }
+  const slideVariants: Variants = {
+    enter: (direction: number) => ({
+      x: direction > 0 ? '100%' : '-100%',
+      opacity: 0,
+      scale: 0.95,
+    }),
+    center: {
+      x: 0,
+      opacity: 1,
+      scale: 1,
+      transition: {
+        x: { type: 'spring' as const, stiffness: 300, damping: 30 },
+        opacity: { duration: 0.3 },
+        scale: { duration: 0.3 },
+      },
+    },
+    exit: (direction: number) => ({
+      x: direction < 0 ? '100%' : '-100%',
+      opacity: 0,
+      scale: 0.95,
+      transition: {
+        x: { type: 'spring' as const, stiffness: 300, damping: 30 },
+        opacity: { duration: 0.3 },
+        scale: { duration: 0.3 },
+      },
+    }),
   };
 
   return (
     <section className="relative min-h-[92vh] flex flex-col items-center justify-center pt-10 pb-20 md:pt-16 md:pb-28 px-4 overflow-hidden bg-transparent">
-      {/* Floating Floral Petals */}
-      <FloatingPetals count={16} className="opacity-60" />
-
       {/* Cinematic Film Grain & Texture Overlay */}
       <div className="absolute inset-0 cinematic-grain pointer-events-none opacity-25" />
 
@@ -122,12 +165,12 @@ export const HeroSection: React.FC = () => {
           initial={{ opacity: 0, y: -15, scale: 0.9 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-          className="mb-4 flex flex-col items-center"
+          className="mb-2 flex flex-col items-center"
         >
           {/* Pillayar Suzhi */}
-          <span className="font-tamil text-2xl sm:text-3xl text-[#7B3F11] font-bold mb-1">
+          {/* <span className="font-tamil text-2xl sm:text-3xl text-[#7B3F11] font-bold mb-1">
             உ
-          </span>
+          </span> */}
 
           <div className="relative w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 flex items-center justify-center p-1.5">
             <img
@@ -136,33 +179,6 @@ export const HeroSection: React.FC = () => {
               className="w-full h-full object-contain filter drop-shadow-[0_4px_12px_rgba(184,134,11,0.35)]"
             />
           </div>
-        </motion.div>
-
-        {/* 2. Sacred Mantra */}
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3, duration: 0.9 }}
-          className="mb-5 max-w-2xl px-4"
-        >
-          <p className="font-tamil text-base sm:text-lg md:text-xl text-[#5C2D0C] font-semibold leading-relaxed tracking-wider drop-shadow-sm">
-            {invocation.ganeshaMantra.sanskrit}
-          </p>
-          <p className="font-tamil text-xs sm:text-sm text-[#7A4B22] max-w-md mx-auto mt-1 leading-relaxed">
-            {invocation.ganeshaMantra.meaning}
-          </p>
-        </motion.div>
-
-        {/* Golden Ornamental Flourish Line */}
-        <motion.div
-          initial={{ opacity: 0, scaleX: 0 }}
-          animate={{ opacity: 0.8, scaleX: 1 }}
-          transition={{ delay: 0.5, duration: 0.8 }}
-          className="flex items-center gap-3 w-40 my-2"
-        >
-          <div className="h-[1px] flex-1 bg-gradient-to-r from-transparent to-[#C68A4C]" />
-          <span className="text-[#C68A4C] text-xs">❖</span>
-          <div className="h-[1px] flex-1 bg-gradient-to-l from-transparent to-[#C68A4C]" />
         </motion.div>
 
         {/* 3. Staggered Cinematic Text Reveal */}
@@ -238,45 +254,38 @@ export const HeroSection: React.FC = () => {
           </div>
         </motion.div>
 
-        {/* 4. 3D Two-Sided Flip Invitation Card with Swipe/Drag Interaction */}
+        {/* 4. Looping Couple Photo Gallery with Swipe Navigation */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.9, duration: 1.1, ease: [0.16, 1, 0.3, 1] }}
           className="relative w-full max-w-lg mx-auto px-2 sm:px-4 mb-8"
         >
-          {/* Card Label & Flip Status Indicator */}
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-3 mb-4 px-2">
+          {/* Gallery Header Status */}
+          <div className="flex items-center justify-between gap-3 mb-4 px-2">
             <div className="flex items-center gap-2">
               <Sparkles className="w-4 h-4 text-[#C68A4C]" />
               <div className="flex flex-col text-left">
-                <span className="font-tamil text-xs sm:text-sm text-[#5C2D0C] font-semibold">
-                  அழைப்பிதழ் அட்டை
+                <span className="font-cinzel text-xs sm:text-sm font-bold text-[#381F0D] uppercase tracking-wider">
+                  Couple Photo Gallery
                 </span>
-                <span className="font-cormorant text-[11px] sm:text-xs text-[#9A531B] font-semibold tracking-wider uppercase">
-                  Wedding Invitation Card
+                <span className="font-tamil text-[11px] text-[#8C4A15] font-medium">
+                  மணமக்கள் புகைப்படத் தொகுப்பு
                 </span>
               </div>
             </div>
 
-            {/* Interactive Flip Status & Click Toggle */}
-            <button
-              type="button"
-              onClick={() => setIsFlipped((prev) => !prev)}
-              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#FAF0DC] hover:bg-[#F5E6CC] border border-[#C68A4C]/60 text-xs font-tamil text-[#5C2D0C] shadow-sm transition-all group"
-              title="அட்டையைத் திருப்ப கிளிக் செய்க (Click to Flip Card)"
-            >
-              <RotateCw className="w-3.5 h-3.5 text-[#8C4A15] group-hover:rotate-180 transition-transform duration-500" />
-              <span className="font-bold">
-                பக்கம் {isFlipped ? '2 / 2 (நிகழ்வுகள்)' : '1 / 2 (மணமக்கள்)'}
+            {/* Photo Counter Pill */}
+            <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-[#FAF0DC] border border-[#C68A4C]/60 text-xs text-[#5C2D0C] font-semibold shadow-xs">
+              <span className="font-cormorant text-sm font-bold tracking-wider">
+                {currentGalleryIndex + 1} / {galleryImages.length}
               </span>
-            </button>
+            </div>
           </div>
 
-          {/* 3D Flip Card Container (Perspective viewport) */}
+          {/* Gallery Carousel Container with Touch & Mouse Swipe */}
           <div
-            className="relative w-full aspect-[3/4] select-none touch-pan-y"
-            style={{ perspective: '1200px' }}
+            className="relative w-full aspect-[4/5] sm:aspect-[3/4] select-none touch-pan-y rounded-3xl overflow-hidden border-2 border-[#C68A4C]/70 shadow-[0_20px_50px_rgba(117,59,18,0.2)] bg-[#FAF4E6]"
             onTouchStart={handleTouchStart}
             onTouchMove={handleTouchMove}
             onTouchEnd={handleTouchEnd}
@@ -285,113 +294,121 @@ export const HeroSection: React.FC = () => {
             onMouseUp={handleMouseUp}
             onMouseLeave={handleMouseUp}
           >
-            {/* Centered Flip Axis Inner Wrapper (preserves 3D transform) */}
-            <div
-              onClick={handleCardClick}
-              className="relative w-full h-full cursor-grab active:cursor-grabbing transition-transform duration-[850ms]"
-              style={{
-                transformStyle: 'preserve-3d',
-                WebkitTransformStyle: 'preserve-3d',
-                transform: isFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)',
-                transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)',
+            {/* Animated Image Slide with AnimatePresence */}
+            <div className="relative w-full h-full overflow-hidden flex items-center justify-center">
+              <AnimatePresence initial={false} custom={galleryDirection}>
+                <motion.div
+                  key={currentGalleryIndex}
+                  custom={galleryDirection}
+                  variants={slideVariants}
+                  initial="enter"
+                  animate="center"
+                  exit="exit"
+                  className="absolute inset-0 w-full h-full flex items-center justify-center bg-[#FAF4E6]"
+                >
+                  <img
+                    src={galleryImages[currentGalleryIndex].src}
+                    alt={galleryImages[currentGalleryIndex].title}
+                    className="w-full h-full object-cover object-center select-none"
+                    draggable={false}
+                  />
+
+                  {/* Subtle dark gradient overlay at top and bottom */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-black/25 pointer-events-none" />
+
+                  {/* Corner Gold Flourish */}
+                  <div className="absolute top-3 left-3 text-xs text-[#FFFDF8]/80 select-none pointer-events-none drop-shadow">❖</div>
+                  <div className="absolute bottom-3 left-3 text-xs text-[#FFFDF8]/80 select-none pointer-events-none drop-shadow">❖</div>
+
+                  {/* Image Title Overlay */}
+                  <div className="absolute bottom-4 left-4 right-4 pointer-events-none text-left z-10">
+                    <span className="font-cinzel text-base sm:text-lg font-bold text-[#FFFDF8] block drop-shadow-md">
+                      {galleryImages[currentGalleryIndex].title}
+                    </span>
+                    <span className="font-tamil text-xs text-[#FAF0DC] font-medium block drop-shadow-sm">
+                      {galleryImages[currentGalleryIndex].tamilTitle}
+                    </span>
+                  </div>
+                </motion.div>
+              </AnimatePresence>
+            </div>
+
+            {/* Quick Zoom Button */}
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                setShowLightbox(true);
               }}
+              className="absolute top-3 right-3 z-20 px-3 py-1.5 rounded-full bg-[#FFFDF8]/95 hover:bg-[#C68A4C] hover:text-[#FFFDF8] text-[#5C2D0C] text-xs font-bold border border-[#C68A4C] shadow-md flex items-center gap-1.5 transition-colors cursor-pointer"
+              title="View Fullscreen"
             >
-              {/* FRONT FACE: Page 1 (மணமக்கள்) */}
-              <div
-                className="absolute inset-0 w-full h-full rounded-3xl overflow-hidden border-2 border-[#C68A4C]/70 shadow-[0_18px_50px_rgba(117,59,18,0.18)] bg-[#FFFDF8]"
-                style={{
-                  backfaceVisibility: 'hidden',
-                  WebkitBackfaceVisibility: 'hidden',
-                  transform: 'rotateY(0deg)',
-                }}
-              >
-                <div className="w-full h-full bg-[#FAF3E3] relative flex items-center justify-center overflow-hidden">
-                  <img
-                    src={frontCardImage}
-                    alt="Madhuprasad & Priyadharshini Wedding Invitation Card - Front"
-                    className="w-full h-full object-contain object-center pointer-events-none select-none"
-                    draggable={false}
-                  />
+              <Eye className="w-3.5 h-3.5" />
+              <span className="hidden sm:inline font-cormorant uppercase tracking-wider text-xs">Zoom</span>
+            </button>
 
-                  {/* Corner Gold Flourish */}
-                  <div className="absolute top-3 left-3 text-xs text-[#C68A4C]/60 select-none pointer-events-none">❖</div>
-                  <div className="absolute bottom-3 left-3 text-xs text-[#C68A4C]/60 select-none pointer-events-none">❖</div>
+            {/* Left Prev Arrow Button (Loops) */}
+            {/* <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                prevGalleryImage();
+              }}
+              className="absolute left-3 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-[#FFFDF8]/85 hover:bg-[#C68A4C] text-[#5C2D0C] hover:text-[#FFFDF8] border border-[#C68A4C] shadow-lg flex items-center justify-center transition-all cursor-pointer transform hover:scale-110 active:scale-95"
+              aria-label="Previous Image"
+              title="Previous (முந்தைய)"
+            >
+              <ChevronLeft className="w-5 h-5" />
+            </button> */}
 
-                  {/* Quick Zoom Button */}
-                  <button
-                    type="button"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      setShowLightbox(true);
-                    }}
-                    className="absolute top-3 right-3 z-10 px-3 py-1.5 rounded-full bg-[#FFFDF8]/95 hover:bg-[#C68A4C] hover:text-[#FFFDF8] text-[#5C2D0C] text-xs font-tamil font-bold border border-[#C68A4C] shadow-md flex items-center gap-1.5 transition-colors"
-                    title="பெரிதாகக் காண (Zoom)"
-                  >
-                    <Eye className="w-3.5 h-3.5" />
-                    <span className="hidden sm:inline">பெரிதாகக் காண</span>
-                  </button>
+            {/* Right Next Arrow Button (Loops) */}
+            {/* <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                nextGalleryImage();
+              }}
+              className="absolute right-3 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-[#FFFDF8]/85 hover:bg-[#C68A4C] text-[#5C2D0C] hover:text-[#FFFDF8] border border-[#C68A4C] shadow-lg flex items-center justify-center transition-all cursor-pointer transform hover:scale-110 active:scale-95"
+              aria-label="Next Image"
+              title="Next (அடுத்தது)"
+            >
+              <ChevronRight className="w-5 h-5" />
+            </button> */}
 
-                  {/* Interactive Swipe Hint Banner */}
-                  <div className="absolute bottom-3 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-[#381F0D]/75 backdrop-blur-sm text-[#FFFDF8] text-[11px] font-tamil pointer-events-none flex items-center gap-1.5 shadow-md border border-[#C68A4C]/40">
-                    <span>வலப்புறம் இழுக்கவும் ➔ (Swipe Right to Flip)</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* BACK FACE: Page 2 (நிகழ்வுகள் & மண்டபம்) */}
-              <div
-                className="absolute inset-0 w-full h-full rounded-3xl overflow-hidden border-2 border-[#C68A4C]/70 shadow-[0_18px_50px_rgba(117,59,18,0.18)] bg-[#FFFDF8]"
-                style={{
-                  backfaceVisibility: 'hidden',
-                  WebkitBackfaceVisibility: 'hidden',
-                  transform: 'rotateY(180deg)',
-                }}
-              >
-                <div className="w-full h-full bg-[#FAF3E3] relative flex items-center justify-center overflow-hidden">
-                  <img
-                    src={backCardImage}
-                    alt="Madhuprasad & Priyadharshini Wedding Invitation Card - Back"
-                    className="w-full h-full object-contain object-center pointer-events-none select-none"
-                    draggable={false}
-                  />
-
-                  {/* Corner Gold Flourish */}
-                  <div className="absolute top-3 left-3 text-xs text-[#C68A4C]/60 select-none pointer-events-none">❖</div>
-                  <div className="absolute bottom-3 left-3 text-xs text-[#C68A4C]/60 select-none pointer-events-none">❖</div>
-
-                  {/* Quick Zoom Button */}
-                  <button
-                    type="button"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      setShowLightbox(true);
-                    }}
-                    className="absolute top-3 right-3 z-10 px-3 py-1.5 rounded-full bg-[#FFFDF8]/95 hover:bg-[#C68A4C] hover:text-[#FFFDF8] text-[#5C2D0C] text-xs font-tamil font-bold border border-[#C68A4C] shadow-md flex items-center gap-1.5 transition-colors"
-                    title="பெரிதாகக் காண (Zoom)"
-                  >
-                    <Eye className="w-3.5 h-3.5" />
-                    <span className="hidden sm:inline">பெரிதாகக் காண</span>
-                  </button>
-
-                  {/* Interactive Swipe Hint Banner */}
-                  <div className="absolute bottom-3 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-[#381F0D]/75 backdrop-blur-sm text-[#FFFDF8] text-[11px] font-tamil pointer-events-none flex items-center gap-1.5 shadow-md border border-[#C68A4C]/40">
-                    <span>◀ இடப்புறம் இழுக்கவும் (Swipe Left to Flip)</span>
-                  </div>
-                </div>
-              </div>
+            {/* Interactive Swipe Hint Banner */}
+            <div className="absolute top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-[#381F0D]/65 backdrop-blur-sm text-[#FFFDF8] text-[10px] font-sans pointer-events-none flex items-center gap-1.5 shadow-md border border-[#C68A4C]/40 z-10">
+              <span>◀ Swipe Left or Right to Loop ▶</span>
             </div>
           </div>
 
-          {/* Swipe / Click helper note below card */}
-          <div className="mt-3 text-center">
-            <p className="font-tamil text-xs text-[#7A4B22] font-medium">
-              {isFlipped
-                ? '◀ இடப்புறம் இழுக்க அல்லது தொட, முன் பக்கம் திரும்பும்'
-                : 'வலப்புறம் இழுக்க அல்லது தொட, பின் பக்கம் திரும்பும் ➔'}
+          {/* Dots Indicator & Caption below Gallery */}
+          <div className="mt-4 flex flex-col items-center gap-2">
+            {/* Pagination Dots */}
+            <div className="flex items-center gap-2">
+              {galleryImages.map((_, idx) => (
+                <button
+                  key={idx}
+                  type="button"
+                  onClick={() => {
+                    setGalleryDirection(idx > currentGalleryIndex ? 1 : -1);
+                    setCurrentGalleryIndex(idx);
+                  }}
+                  className={`transition-all duration-300 rounded-full cursor-pointer ${
+                    currentGalleryIndex === idx
+                      ? 'w-7 h-2 bg-gradient-to-r from-[#8C4A15] to-[#C68A4C] shadow-xs'
+                      : 'w-2 h-2 bg-[#C68A4C]/45 hover:bg-[#C68A4C]'
+                  }`}
+                  aria-label={`Go to slide ${idx + 1}`}
+                />
+              ))}
+            </div>
+
+            <p className="font-tamil text-xs text-[#7A4B22] font-medium text-center">
+              படங்களை மாற்ற இடப்புறம் அல்லது வலப்புறம் இழுக்கவும் (Swipe to Loop)
             </p>
           </div>
 
-          {/* Little Video Button below Invitation Card */}
+          {/* Little Video Button below Gallery */}
           <div className="mt-5 flex justify-center">
             <motion.button
               type="button"
@@ -417,52 +434,70 @@ export const HeroSection: React.FC = () => {
         </motion.div>
       </div>
 
-      {/* Lightbox Modal for Full Invitation Card Zoom */}
+      {/* Lightbox Modal for Gallery Photos */}
       <AnimatePresence>
         {showLightbox && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 p-3 sm:p-6 backdrop-blur-md"
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-3 sm:p-6 backdrop-blur-md select-none"
             onClick={() => setShowLightbox(false)}
           >
             {/* Close Button */}
             <button
               type="button"
               onClick={() => setShowLightbox(false)}
-              className="absolute top-6 right-6 w-12 h-12 rounded-full bg-[#FFFDF8] border border-[#C68A4C] text-[#5C2D0C] flex items-center justify-center hover:bg-[#C68A4C] hover:text-[#FFFDF8] transition-colors shadow-2xl z-10"
+              className="absolute top-6 right-6 w-11 h-11 rounded-full bg-[#FFFDF8] border border-[#C68A4C] text-[#5C2D0C] flex items-center justify-center hover:bg-[#C68A4C] hover:text-[#FFFDF8] transition-colors shadow-2xl z-20 cursor-pointer"
               aria-label="Close"
             >
-              <X className="w-6 h-6" />
+              <X className="w-5 h-5" />
             </button>
 
-            {/* Lightbox Side Toggle */}
-            <div
-              className="absolute top-6 left-6 z-10 flex items-center gap-2"
-              onClick={(e) => e.stopPropagation()}
+            {/* Lightbox Prev Button */}
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                prevGalleryImage();
+              }}
+              className="absolute left-4 sm:left-8 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-[#FFFDF8]/90 hover:bg-[#C68A4C] text-[#5C2D0C] hover:text-[#FFFDF8] border border-[#C68A4C] shadow-2xl flex items-center justify-center transition-all cursor-pointer transform hover:scale-110"
+              aria-label="Previous"
             >
-              <button
-                type="button"
-                onClick={() => setIsFlipped((prev) => !prev)}
-                className="px-4 py-2 rounded-full bg-[#FFFDF8] border border-[#C68A4C] text-[#5C2D0C] text-xs font-tamil font-bold shadow-lg flex items-center gap-2 hover:bg-[#C68A4C] hover:text-[#FFFDF8] transition-colors"
-              >
-                <RotateCw className="w-3.5 h-3.5 text-[#8C4A15]" />
-                <span>
-                  {isFlipped ? 'பக்கம் 1 காண்க (Front)' : 'பக்கம் 2 காண்க (Back)'}
-                </span>
-              </button>
-            </div>
+              <ChevronLeft className="w-6 h-6" />
+            </button>
 
+            {/* Lightbox Next Button */}
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                nextGalleryImage();
+              }}
+              className="absolute right-4 sm:right-8 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-[#FFFDF8]/90 hover:bg-[#C68A4C] text-[#5C2D0C] hover:text-[#FFFDF8] border border-[#C68A4C] shadow-2xl flex items-center justify-center transition-all cursor-pointer transform hover:scale-110"
+              aria-label="Next"
+            >
+              <ChevronRight className="w-6 h-6" />
+            </button>
+
+            {/* Active Image with Title */}
             <div
-              className="max-w-2xl max-h-[92vh] overflow-hidden rounded-2xl border-2 border-[#C68A4C] shadow-2xl bg-[#FFFDF8]"
+              className="max-w-2xl max-h-[85vh] overflow-hidden rounded-3xl border-2 border-[#C68A4C] shadow-2xl bg-black relative flex flex-col items-center"
               onClick={(e) => e.stopPropagation()}
             >
               <img
-                src={currentCardImage}
-                alt="Full Wedding Invitation Card"
-                className="w-full h-full object-contain"
+                src={galleryImages[currentGalleryIndex].src}
+                alt={galleryImages[currentGalleryIndex].title}
+                className="w-full max-h-[75vh] object-contain"
               />
+              <div className="w-full p-3 bg-[#FFFDF8] text-center border-t border-[#C68A4C]/40">
+                <p className="font-cinzel text-sm sm:text-base font-bold text-[#381F0D]">
+                  {galleryImages[currentGalleryIndex].title}
+                </p>
+                <p className="font-cormorant text-xs text-[#8C4A15] font-semibold">
+                  Photo {currentGalleryIndex + 1} of {galleryImages.length}
+                </p>
+              </div>
             </div>
           </motion.div>
         )}

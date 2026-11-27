@@ -1,15 +1,45 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { ShieldCheck, Heart, Sparkles } from 'lucide-react';
+import React, { useState, useRef, useEffect } from 'react';
+import { motion, AnimatePresence, useInView } from 'framer-motion';
+import { Sparkles, RotateCcw } from 'lucide-react';
 import { weddingConfig } from '../config/wedding';
 
 export const AjayHanumanSection: React.FC = () => {
   const { devotionalBlessing } = weddingConfig;
+  const [hasVideoEnded, setHasVideoEnded] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+  const isInView = useInView(containerRef, { once: false, amount: 0.3 });
 
   if (!devotionalBlessing.enabled) return null;
 
+  const videoSrc = devotionalBlessing.video || '/assets/images/ajay-hanuman.mp4';
+  const gifSrc = devotionalBlessing.gif || devotionalBlessing.image || '/assets/images/ajay-hanuman.gif';
+
+  // Play video whenever the section scrolls into view (if not yet ended)
+  useEffect(() => {
+    if (isInView && videoRef.current && !hasVideoEnded) {
+      videoRef.current.muted = true;
+      videoRef.current.play().catch(() => {
+        // Fallback to gif if autoplay is blocked by browser policy
+        setHasVideoEnded(true);
+      });
+    }
+  }, [isInView, hasVideoEnded]);
+
+  const handleReplay = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setHasVideoEnded(false);
+    setTimeout(() => {
+      if (videoRef.current) {
+        videoRef.current.muted = true;
+        videoRef.current.currentTime = 0;
+        videoRef.current.play().catch(() => {});
+      }
+    }, 100);
+  };
+
   return (
-    <section className="py-20 md:py-32 px-4 bg-transparent relative overflow-hidden">
+    <section ref={containerRef} className="py-20 md:py-32 px-4 bg-transparent relative overflow-hidden">
       {/* Divine Radiant Golden Sun Aura */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[550px] rounded-full bg-[#D4AF37]/15 blur-3xl pointer-events-none -z-10" />
 
@@ -36,11 +66,11 @@ export const AjayHanumanSection: React.FC = () => {
           </div>
 
           <h2 className="font-cinzel text-2xl sm:text-4xl md:text-5xl text-[#381F0D] font-bold tracking-wide uppercase drop-shadow-sm">
-            {devotionalBlessing.tamilTitle}
+            {devotionalBlessing.title}
           </h2>
 
           <p className="font-tamil text-base sm:text-xl text-[#5C3B24] mt-2 font-medium">
-            {devotionalBlessing.title}
+            {devotionalBlessing.tamilTitle}
           </p>
 
           <div className="flex items-center justify-center gap-3 w-32 mx-auto mt-4 opacity-75">
@@ -60,33 +90,53 @@ export const AjayHanumanSection: React.FC = () => {
         >
           {/* Temple Arch Outline */}
           <div className="relative max-w-lg mx-auto overflow-hidden rounded-2xl border-2 border-[#C68A4C]/50 shadow-xl group">
-            {/* Image of Ajay as Hanuman */}
+            {/* Video or GIF of Ajay as Hanuman */}
             <div className="aspect-[4/5] sm:aspect-[3/4] w-full bg-[#FAF4E6] relative flex items-center justify-center overflow-hidden">
-              <img
-                src={devotionalBlessing.image}
-                alt={devotionalBlessing.title}
-                onError={(e) => {
-                  // Fallback if user hasn't added the specific image yet
-                  (e.target as HTMLElement).style.display = 'none';
-                  const fallbackDiv = document.getElementById('ajay-hanuman-fallback');
-                  if (fallbackDiv) fallbackDiv.style.display = 'flex';
-                }}
-                className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out select-none"
-              />
+              <AnimatePresence mode="wait">
+                {!hasVideoEnded ? (
+                  <motion.video
+                    key="hanuman-video"
+                    ref={(el) => {
+                      videoRef.current = el;
+                      if (el) el.muted = true;
+                    }}
+                    src={videoSrc}
+                    playsInline
+                    muted
+                    autoPlay
+                    onEnded={() => setHasVideoEnded(true)}
+                    onError={() => setHasVideoEnded(true)}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.5 }}
+                    className="w-full h-full object-cover object-center select-none"
+                  />
+                ) : (
+                  <motion.img
+                    key="hanuman-gif"
+                    src={gifSrc}
+                    alt={devotionalBlessing.title}
+                    initial={{ opacity: 0, scale: 1.02 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.8, ease: 'easeOut' }}
+                    className="w-full h-full object-cover object-center select-none"
+                  />
+                )}
+              </AnimatePresence>
 
-              {/* Graceful Fallback if image is being prepared */}
-              <div
-                id="ajay-hanuman-fallback"
-                className="hidden absolute inset-0 flex-col items-center justify-center p-6 text-center bg-gradient-to-b from-[#FDF9EE] to-[#F5E8CF]"
-              >
-                <div className="w-20 h-20 rounded-full border-2 border-[#C68A4C] flex items-center justify-center mb-4 bg-[#FAF0DC] text-3xl shadow-md text-[#8C4A15]">
-                  🕉
-                </div>
-                <h4 className="font-cinzel text-xl text-[#381F0D] font-bold mb-2">
-                  ஸ்ரீ அனுமன் நெஞ்சில் தம்பதியர்
-                </h4>
-
-              </div>
+              {/* Replay Video Button (visible after video finishes and gif loops) */}
+              {hasVideoEnded && (
+                <button
+                  type="button"
+                  onClick={handleReplay}
+                  className="absolute top-3 right-3 z-20 px-3 py-1.5 rounded-full bg-[#FFFDF8]/90 hover:bg-[#C68A4C] hover:text-[#FFFDF8] text-[#5C2D0C] text-xs font-semibold border border-[#C68A4C] shadow-md flex items-center gap-1.5 transition-all cursor-pointer backdrop-blur-xs transform hover:scale-105"
+                  title="Replay Video (மீண்டும் காண)"
+                >
+                  <RotateCcw className="w-3.5 h-3.5" />
+                  <span className="font-cormorant text-xs font-bold uppercase tracking-wider">Replay</span>
+                </button>
+              )}
 
               {/* Overlay Vignette */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
@@ -100,19 +150,6 @@ export const AjayHanumanSection: React.FC = () => {
               </div>
             </div>
           </div>
-
-          {/* Devotional Stanza / Blessings Text */}
-          {/* <div className="mt-8 max-w-2xl mx-auto space-y-4">
-            <p className="font-tamil text-base sm:text-lg md:text-xl text-[#381F0D] font-semibold leading-relaxed drop-shadow-sm">
-              "{devotionalBlessing.caption}"
-            </p>
-
-            {devotionalBlessing.tamilVerse && (
-              <p className="font-tamil text-xs sm:text-sm text-[#5C3B24] italic leading-relaxed pt-2 border-t border-[#C68A4C]/30 font-medium">
-                {devotionalBlessing.tamilVerse}
-              </p>
-            )}
-          </div> */}
 
           {/* Golden Corner Ornaments */}
           <div className="absolute top-3 left-3 text-[#C68A4C]/50 text-sm select-none">❖</div>

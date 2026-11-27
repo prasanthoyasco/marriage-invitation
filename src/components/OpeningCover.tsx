@@ -93,87 +93,96 @@ export const OpeningCover: React.FC<OpeningCoverProps> = ({ isOpen, onOpen }) =>
           initial={{ opacity: 1 }}
           exit={{
             opacity: 0,
-            scale: 1.08,
+            scale: 1.06,
             filter: 'blur(8px)',
-            transition: { duration: 0.9, ease: [0.22, 1, 0.36, 1] },
+            transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] },
           }}
-          className="fixed inset-0 z-50 flex items-center justify-center bg-[#0e0b08] overflow-hidden select-none cursor-pointer"
+          className="fixed inset-0 z-50 flex flex-col items-center justify-center overflow-hidden select-none cursor-pointer p-4"
+          style={{
+            backgroundImage: `radial-gradient(circle at center, #FDF9EE 0%, #F6ECDB 65%, #EAD6B4 100%)`,
+          }}
           onClick={handleStartInvitation}
         >
-          {/* Subtle Ambient Floating Flower Petals */}
-          <FloatingPetals count={16} className="opacity-60" />
-
-          {/* Deep Cinematic Warm Background Vignette */}
-          <div className="absolute inset-0 bg-[#e5d3a2] pointer-events-none" />
+          {/* Subtle Ambient Floating Flower Petals in Background */}
+          <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
+            <FloatingPetals count={16} className="opacity-60" />
+            <div className="absolute inset-0 bg-radial-gradient from-transparent via-[#8C4A15]/5 to-[#5C2D0C]/15 pointer-events-none" />
+          </div>
 
           {/* Camera Zoom & Envelope / Anime Wrapper */}
           <motion.div
             animate={
               isZoomingOut
-                ? { scale: 1.18, opacity: 0 }
+                ? { scale: 1.15, opacity: 0 }
                 : { scale: 1, opacity: 1 }
             }
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className="relative w-full h-full max-w-3xl max-h-[100vh] flex flex-col items-center justify-center p-3 sm:p-6"
+            className="relative z-10 w-full max-w-sm sm:max-w-md flex flex-col items-center justify-center mx-auto"
           >
             {/* Wedding Monogram & Divine Invocation */}
             <motion.div
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, delay: 0.2 }}
-              className="absolute top-4 sm:top-8 z-20 flex flex-col items-center pointer-events-none px-4"
+              className="flex flex-col items-center pointer-events-none px-4 mb-3 sm:mb-4 text-center"
             >
               {/* Monogram Seal */}
-              <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full border-2 border-[#C68A4C] bg-[#FFFDF8]/95 backdrop-blur-md flex items-center justify-center shadow-xl relative mb-2">
+              <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full border-2 border-[#C68A4C] bg-[#FFFDF8] flex items-center justify-center shadow-lg mb-2">
                 <span className="font-cinzel text-xs sm:text-sm font-bold text-[#8C4A15] tracking-widest">
                   {weddingConfig.couple.monogram || 'M & P'}
                 </span>
               </div>
 
-              <h1 className="font-cinzel text-sm sm:text-lg text-center text-[#381F0D] tracking-wider mt-1 drop-shadow-sm font-bold">
+              <h1 className="font-cinzel text-xs sm:text-sm md:text-base text-center text-[#381F0D] tracking-[0.2em] uppercase font-bold drop-shadow-xs">
                 {weddingConfig.couple.title}
               </h1>
             </motion.div>
 
             {/* Central Animated Namaste Couple Container */}
-            <div className="relative w-full max-w-lg aspect-[4/5] sm:aspect-[4/3] max-h-[68vh] flex items-center justify-center rounded-3xl overflow-hidden shadow-[0_20px_50px_rgba(74,36,10,0.35)] border-2 border-[#C68A4C]/80 bg-gradient-to-b from-[#FFFDF8] via-[#FAF4E6] to-[#F3E5CE]">
+            <div className="relative w-full rounded-3xl overflow-hidden shadow-[0_20px_50px_rgba(74,36,10,0.22)] border-2 border-[#C68A4C]/80 bg-gradient-to-b from-[#FFFDF8] via-[#FAF4E6] to-[#F3E5CE]">
               {/* Top Golden Filigree Border Accent */}
-              <div className="absolute top-2 left-4 right-4 flex items-center justify-between pointer-events-none z-10 opacity-70">
+              <div className="absolute top-2.5 left-4 right-4 flex items-center justify-between pointer-events-none z-10 opacity-70">
                 <span className="text-xs text-[#8C4A15]">❖</span>
                 <span className="text-xs text-[#8C4A15]">❖</span>
               </div>
 
               {/* Animated Indian Wedding Namaste Couple GIF */}
               {isGif ? (
-                <div className="w-full h-full flex items-center justify-center p-4 relative">
+                <div className="w-full flex items-center justify-center p-3 relative">
                   <img
                     src={animeGif}
                     alt="Animated Indian Wedding Namaste Couple"
-                    className="w-full h-full object-contain filter drop-shadow-[0_8px_20px_rgba(140,74,21,0.2)] select-none"
+                    className="w-full h-auto max-h-[52vh] sm:max-h-[58vh] object-contain filter drop-shadow-[0_8px_20px_rgba(140,74,21,0.2)] select-none"
                   />
                   {/* Subtle golden ambient glow behind the couple */}
                   <div className="absolute inset-0 bg-radial-gradient from-[#C68A4C]/15 via-transparent to-transparent pointer-events-none" />
                 </div>
               ) : (
-                <video
-                  ref={videoRef}
-                  src={openingVideo}
-                  poster={weddingConfig.openingCover.poster}
-                  playsInline
-                  muted
-                  onEnded={handleFinish}
-                  className="w-full h-full object-cover object-center select-none"
-                />
+                <div className="w-full aspect-[4/5] sm:aspect-[3/4] relative">
+                  <video
+                    ref={videoRef}
+                    src={openingVideo}
+                    poster={weddingConfig.openingCover.poster}
+                    playsInline
+                    muted
+                    onEnded={handleFinish}
+                    className="w-full h-full object-cover object-center select-none"
+                  />
+                </div>
               )}
 
               {/* Initial Tap to Open Overlay */}
               {!isPlaying && (
-                <div className="absolute inset-0 flex flex-col items-center justify-end p-4 z-20">
-                  <span className="px-6 py-2 rounded-full bg-gradient-to-r from-[#8C4A15] via-[#A85D1E] to-[#7A3E10] text-[#FFFDF8] font-bold shadow-xl tracking-wider uppercase transform hover:scale-105 transition-transform flex flex-col items-center leading-tight">
-                    <span className="font-tamil text-sm sm:text-base">{weddingConfig.openingCover.tapHint}</span>
-                    <span className="font-cormorant text-[11px] font-bold text-[#FAF0DC]">Tap to Open</span>
+                <div className="absolute inset-0 flex flex-col items-center justify-end pb-3 px-4 z-20">
+                  <span className="px-6 py-2.5 rounded-2xl bg-gradient-to-r from-[#8C4A15] via-[#A85D1E] to-[#7A3E10] text-[#FFFDF8] font-bold shadow-xl tracking-wider uppercase transform hover:scale-105 transition-transform flex flex-col items-center leading-tight">
+                    <span className="font-cinzel text-xs sm:text-sm font-bold tracking-wider">
+                      Tap to Open Invitation
+                    </span>
+                    <span className="font-cormorant text-[10px] font-bold text-[#FAF0DC] tracking-wider uppercase">
+                      Tap to Open
+                    </span>
                   </span>
-                  <span className="text-xs font-tamil text-[#5C3B24] mt-3 font-semibold">
+                  <span className="text-xs font-tamil text-[#5C3B24] mt-2 font-semibold">
                     (அழைப்பிதழைத் திறக்க)
                   </span>
                 </div>

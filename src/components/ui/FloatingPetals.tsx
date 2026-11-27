@@ -32,13 +32,13 @@ export const FloatingPetals: React.FC<FloatingPetalsProps> = ({ count = 22, clas
     if (!ctx) return;
 
     let animationFrameId: number;
-    let width = (canvas.width = canvas.offsetWidth || window.innerWidth);
-    let height = (canvas.height = canvas.offsetHeight || window.innerHeight);
+    let width = (canvas.width = window.innerWidth);
+    let height = (canvas.height = window.innerHeight);
 
     const handleResize = () => {
       if (!canvas) return;
-      width = canvas.width = canvas.offsetWidth || window.innerWidth;
-      height = canvas.height = canvas.offsetHeight || window.innerHeight;
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
     };
 
     window.addEventListener('resize', handleResize);
@@ -112,11 +112,21 @@ export const FloatingPetals: React.FC<FloatingPetalsProps> = ({ count = 22, clas
     };
   }, [count]);
 
+  const isFixed = className.includes('fixed');
   return (
     <canvas
       ref={canvasRef}
       aria-hidden="true"
-      className={`pointer-events-none absolute inset-0 z-10 w-full h-full ${className}`}
+      style={{
+        position: isFixed ? 'fixed' : 'absolute',
+        top: 0,
+        left: 0,
+        width: '100%',
+        height: '100%',
+        display: 'block',
+        pointerEvents: 'none',
+      }}
+      className={`pointer-events-none ${isFixed ? 'fixed' : 'absolute'} inset-0 w-full h-full ${className}`}
     />
   );
 };

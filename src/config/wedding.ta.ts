@@ -170,7 +170,9 @@ export const weddingConfig: WeddingConfig = {
     title: "ஸ்ரீ அனுமன் இதயத்தில் தெய்வீக தம்பதியர்",
     tamilTitle: "ராம பக்தன் ஸ்ரீ அனுமன் ஆசி",
     subtitle: "Ajay as Lord Hanuman Revealing the Couple in His Heart",
+    video: "/assets/images/ajay-hanuman.mp4",
     image: "/assets/images/ajay-hanuman.gif",
+    gif: "/assets/images/ajay-hanuman.gif",
     caption:
       "நெஞ்சைத் திறந்து சீதா ராமரைக் காட்டிய பக்த அனுமன் போல், இதயத்தில் நிறைந்து அருள் பாலிக்கும் தெய்வீகப் பாதுகாப்பு & பேரன்பு.",
     tamilVerse:
@@ -181,9 +183,9 @@ export const weddingConfig: WeddingConfig = {
     name: "அஜய்",
     tamilName: "அஜய்",
     role: "திருமண ஒருங்கிணைப்பாளர் / Contact Coordinator",
-    phone: "+919876543210",
-    displayPhone: "+91 98765 43210",
-    whatsappNumber: "919876543210",
+    phone: "+918778614319",
+    displayPhone: "+91 87786 14319",
+    whatsappNumber: "918778614319",
     note: "நிகழ்வு, தங்குமிடம் மற்றும் வழிகாட்டுதல்களுக்கு அஜயை எந்நேரமும் தொடர்பு கொள்ளலாம்."
   },
 
@@ -253,15 +255,15 @@ export const weddingConfig: WeddingConfig = {
 
   rsvp: {
     enabled: true,
-    targetWhatsApp: "919876543210",
+    targetWhatsApp: "918778614319",
     coordinators: [
       {
         name: "அஜய்",
         tamilName: "அஜய்",
-        phone: "+919876543210",
-        displayPhone: "+91 98765 43210",
-        whatsappUrl: "https://wa.me/919876543210",
-        callUrl: "tel:+919876543210"
+        phone: "+918778614319",
+        displayPhone: "+91 87786 14319",
+        whatsappUrl: "https://wa.me/918778614319",
+        callUrl: "tel:+918778614319"
       }
     ]
   },

@@ -40,17 +40,17 @@ export function downloadIcsWithReminders(event: CalendarEventParams): void {
     `DTSTART:${event.startDate}`,
     `DTEND:${event.endDate}`,
     'STATUS:CONFIRMED',
-    // 1 Week Before Reminder
+    // 1 Week Before Reminder (-P7D)
     'BEGIN:VALARM',
     'TRIGGER:-P7D',
     'ACTION:DISPLAY',
-    `DESCRIPTION:நினைவூட்டல்: 1 வாரத்தில் அர்ஜுன் & மீனாட்சி திருமண விழா (${event.title})`,
+    `DESCRIPTION:Reminder: 1 week until Madhuprasath & Priyadharshini's Wedding Ceremony (${event.title})`,
     'END:VALARM',
-    // 1 Hour Before Reminder
+    // 1 Hour Before Reminder (-PT1H)
     'BEGIN:VALARM',
     'TRIGGER:-PT1H',
     'ACTION:DISPLAY',
-    `DESCRIPTION:நினைவூட்டல்: இன்னும் 1 மணி நேரத்தில் திருமண விழா துவங்குகிறது (${event.title})`,
+    `DESCRIPTION:Reminder: Wedding Ceremony begins in 1 hour (${event.title})`,
     'END:VALARM',
     'END:VEVENT',
     'END:VCALENDAR'

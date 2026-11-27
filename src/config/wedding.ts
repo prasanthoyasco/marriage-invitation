@@ -65,8 +65,8 @@ export const weddingConfig: WeddingConfig = {
       role: "Groom",
 
       parents: {
-        father: "Mr. R. Srinivasan",
-        mother: "Mrs. Lakshmi Srinivasan"
+        father: "LATE Ramu NS",
+        mother: "Punitha C"
       }
     },
 
@@ -80,8 +80,8 @@ export const weddingConfig: WeddingConfig = {
       role: "Bride",
 
       parents: {
-        father: "Mr. S. Ramesh",
-        mother: "Mrs. Meena Ramesh"
+        father: "LATE Jeyaram",
+        mother: "Punithavathi S"
       }
     }
   },
@@ -110,8 +110,8 @@ export const weddingConfig: WeddingConfig = {
       intro: "With the Divine Blessings of Our Ancestors & Elders",
 
       elders: [
-        "Late Mr. R. Subramanian & Late Mrs. Saraswathi",
-        "Late Mr. S. Krishnan & Late Mrs. Janaki"
+        "Late Mr. Ramu NS & Mrs.  Punitha C",
+        "Late Mr. LATE Jeyaram & Mrs.Punithavathi S"
       ],
 
       invitationNote:
@@ -122,22 +122,21 @@ export const weddingConfig: WeddingConfig = {
   events: [
     {
       id: "reception",
-      title: "Wedding Reception & DJ Musical Night",
+      title: "Wedding Reception & Musical Evening",
       tamilTitle: "Reception",
       subtitle: "Reception • 6:00 PM - 10:00 PM",
       date: "Sunday, 7th February 2027",
       tamilDate: "Sunday, 07-02-2027",
       time: "6:00 PM - 10:00 PM",
-      secondaryTime: "🎧 DJ Musical Night: 9:00 PM - 10:00 PM",
       description:
         "An enchanting evening of joyful music, celebration, dance, and a lavish dinner to welcome and celebrate the newlyweds.",
       tamilDescription:
-        "Join us for an evening of celebration starting with a couple's dance from 6:00 PM to 10:00 PM, followed by an energetic DJ musical party from 9:00 PM to 10:00 PM.",
+        "Join us for an evening of celebration starting with a couple's dance and dinner from 6:00 PM to 10:00 PM.",
       venueName: "Sri Ranganayaki Kalyana Mandapam",
       address: "Sri Ranganayaki Kalyana Mandapam, Nanganallur, Chennai",
       mapsUrl: "https://maps.google.com/?q=Sri+Ranganayaki+Kalyana+Mandapam+Nanganallur+Chennai",
-      image: "/assets/images/event-wedding.jpeg",
-      video: "/assets/video/coupledance.mp",
+      image: "/assets/images/event-wedding.png",
+      video: "",
       videoPoster: "/assets/images/event-wedding.png",
       videoDurationText: "Couple Dance"
     },
@@ -170,7 +169,9 @@ export const weddingConfig: WeddingConfig = {
     title: "Divine Couple in the Heart of Lord Hanuman",
     tamilTitle: "Blessings of Devotee Lord Hanuman",
     subtitle: "Ajay as Lord Hanuman Revealing the Couple in His Heart",
+    video: "/assets/images/ajay-hanuman.mp4",
     image: "/assets/images/ajay-hanuman.gif",
+    gif: "/assets/images/ajay-hanuman.gif",
     caption:
       "Just as Bhakta Hanuman revealed Sita Rama in his sacred heart, may divine grace, eternal protection, and abundant love bless the couple forever.",
     tamilVerse:
@@ -181,9 +182,9 @@ export const weddingConfig: WeddingConfig = {
     name: "Ajay",
     tamilName: "Ajay",
     role: "Wedding Coordinator",
-    phone: "+916369090376",
-    displayPhone: "+91 63690 90376",
-    whatsappNumber: "916369090376",
+    phone: "+918778614319",
+    displayPhone: "+91 87786 14319",
+    whatsappNumber: "918778614319",
     note: "Feel free to reach out to Ajay anytime for directions, event details, accommodation, or any assistance."
   },
 
@@ -253,15 +254,15 @@ export const weddingConfig: WeddingConfig = {
 
   rsvp: {
     enabled: true,
-    targetWhatsApp: "919876543210",
+    targetWhatsApp: "918778614319",
     coordinators: [
       {
         name: "Ajay",
         tamilName: "Ajay",
-        phone: "+919876543210",
-        displayPhone: "+91 98765 43210",
-        whatsappUrl: "https://wa.me/919876543210",
-        callUrl: "tel:+919876543210"
+        phone: "+918778614319",
+        displayPhone: "+91 87786 14319",
+        whatsappUrl: "https://wa.me/918778614319",
+        callUrl: "tel:+918778614319"
       }
     ]
   },

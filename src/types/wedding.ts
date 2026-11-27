@@ -100,6 +100,8 @@ export interface DevotionalBlessingConfig {
   tamilTitle: string;
   subtitle: string;
   image: string;
+  video?: string;
+  gif?: string;
   caption: string;
   tamilVerse: string;
 }

@@ -77,7 +77,7 @@ export const CoupleSection: React.FC = () => {
                 {couple.groom.labelTamil || "மாப்பிள்ளை"}
               </span>
             </div>
-            <h3 className="font-cinzel text-2xl sm:text-3xl text-[#381F0D] font-bold">
+            <h3 className="font-cinzel text-xl sm:text-3xl text-[#381F0D] font-black">
               {couple.groom.tamilName || couple.groom.name}
             </h3>
             {couple.groom.nameTransliteration && (
@@ -85,14 +85,17 @@ export const CoupleSection: React.FC = () => {
                 {couple.groom.nameTransliteration}
               </p>
             )}
-            {/* <div className="w-14 h-[1px] bg-[#C68A4C]/60 mx-auto my-3" /> */}
-            {/* <p className="font-tamil text-sm sm:text-base text-[#5C3B24] font-medium leading-relaxed">
-              பெற்றோர்
-              <br />
-              <span className="font-semibold text-[#381F0D]">
-                {couple.groom.parents.mother} & {couple.groom.parents.father}
+            <div className="w-16 h-[1px] bg-[#C68A4C]/60 mx-auto my-3" />
+            <div className="text-center space-y-1">
+              <span className="text-[11px] uppercase tracking-[0.2em] text-[#8C4A15] font-bold block font-cormorant">
+                Parents • பெற்றோர்
               </span>
-            </p> */}
+              <div className="font-cormorant text-md font-bold sm:text-base text-[#381F0D] leading-relaxed">
+                <p>{couple.groom.parents.father}</p>
+                <p>{couple.groom.parents.mother}</p>
+
+              </div>
+            </div>
           </motion.div>
 
           {/* "With" Calligraphic Connector */}
@@ -125,7 +128,7 @@ export const CoupleSection: React.FC = () => {
                 {couple.bride.labelTamil || "மணப்பெண்"}
               </span>
             </div>
-            <h3 className="font-cinzel text-2xl sm:text-3xl text-[#381F0D] font-bold">
+            <h3 className="font-cinzel text-xl sm:text-3xl text-[#381F0D] font-black">
               {couple.bride.tamilName || couple.bride.name}
             </h3>
             {couple.bride.nameTransliteration && (
@@ -133,14 +136,17 @@ export const CoupleSection: React.FC = () => {
                 {couple.bride.nameTransliteration}
               </p>
             )}
-            {/* <div className="w-14 h-[1px] bg-[#C68A4C]/60 mx-auto my-3" /> */}
-            {/* <p className="font-tamil text-sm sm:text-base text-[#5C3B24] font-medium leading-relaxed">
-              பெற்றோர்
-              <br />
-              <span className="font-semibold text-[#381F0D]">
-                {couple.bride.parents.mother} & {couple.bride.parents.father}
+            <div className="w-16 h-[1px] bg-[#C68A4C]/60 mx-auto my-3" />
+            <div className="text-center space-y-1">
+              <span className="text-[11px] uppercase tracking-[0.2em] text-[#8C4A15] font-bold block font-cormorant">
+                Parents • பெற்றோர்
               </span>
-            </p> */}
+              <div className="font-cormorant text-md font-bold sm:text-base text-[#381F0D] leading-relaxed">
+                <p>{couple.bride.parents.father}</p>
+                <p>{couple.bride.parents.mother}</p>
+
+              </div>
+            </div>
           </motion.div>
         </div>
       </div>

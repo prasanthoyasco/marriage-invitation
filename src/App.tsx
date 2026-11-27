@@ -14,6 +14,7 @@ import { VenueSection } from './components/VenueSection';
 import { ReminderSection } from './components/ReminderSection';
 import { Footer } from './components/Footer';
 import { CustomCursor } from './components/ui/CustomCursor';
+import { FloatingPetals } from './components/ui/FloatingPetals';
 
 export function App() {
   const [hasOpened, setHasOpened] = useState(false);
@@ -36,6 +37,9 @@ export function App() {
 
       {/* Desktop Luxury Magnetic Custom Cursor */}
       <CustomCursor />
+
+      {/* Persistent Floating Floral Petals throughout entire website until footer */}
+      <FloatingPetals count={26} className="fixed inset-0 pointer-events-none z-20 opacity-70" />
 
       {/* 1. Opening Cover Experience (3-5s Anime Video / Envelope Opening) */}
       <OpeningCover isOpen={hasOpened} onOpen={handleOpenInvitation} />

@@ -1,15 +1,18 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Calendar, Bell, Download, Clock } from 'lucide-react';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Calendar, Bell, Download, Clock, CheckCircle } from 'lucide-react';
 import { weddingConfig } from '../config/wedding';
 import { generateGoogleCalendarUrl, downloadIcsWithReminders } from '../lib/calendar';
 
 export const ReminderSection: React.FC = () => {
   const { reminder } = weddingConfig;
   const calendarUrl = generateGoogleCalendarUrl(reminder.calendarEvent);
+  const [downloaded, setDownloaded] = useState(false);
 
   const handleDownloadIcs = () => {
     downloadIcsWithReminders(reminder.calendarEvent);
+    setDownloaded(true);
+    setTimeout(() => setDownloaded(false), 6000);
   };
 
   return (
@@ -90,7 +93,7 @@ export const ReminderSection: React.FC = () => {
             <button
               type="button"
               onClick={handleDownloadIcs}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-3 rounded-xl border-2 border-[#C68A4C] bg-[#FAF0DC] hover:bg-[#F5E6CC] text-[#381F0D] font-bold uppercase transition-all duration-300 shadow-md"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-3 rounded-xl border-2 border-[#C68A4C] bg-[#FAF0DC] hover:bg-[#F5E6CC] text-[#381F0D] font-bold uppercase transition-all duration-300 shadow-md cursor-pointer"
             >
               <Download className="w-4 h-4 text-[#8C4A15]" />
               <div className="flex flex-col items-center leading-tight">
@@ -101,6 +104,21 @@ export const ReminderSection: React.FC = () => {
               </div>
             </button>
           </div>
+
+          {/* Feedback Toast when .ics with dual reminders is downloaded */}
+          <AnimatePresence>
+            {downloaded && (
+              <motion.div
+                initial={{ opacity: 0, y: -8, scale: 0.95 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: -8, scale: 0.95 }}
+                className="mb-5 p-3 rounded-2xl bg-[#F0FDF4] border border-[#22C55E]/50 text-[#166534] text-xs sm:text-sm font-semibold flex items-center justify-center gap-2 shadow-sm max-w-md mx-auto"
+              >
+                <CheckCircle className="w-4 h-4 text-[#22C55E] flex-shrink-0" />
+                <span>✓ Automated reminders scheduled: 1 week before & 1 hour before!</span>
+              </motion.div>
+            )}
+          </AnimatePresence>
 
           <p className="text-xs sm:text-sm text-[#5C3B24] max-w-md mx-auto leading-relaxed font-medium">
             {reminder.instruction}
