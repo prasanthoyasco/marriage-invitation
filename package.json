@@ -6,7 +6,10 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "clean:media": "node scripts/clean-unused-media.js",
+    "clean:media:backup": "node scripts/clean-unused-media.js --backup",
+    "clean:media:remove": "node scripts/clean-unused-media.js --remove"
   },
   "devDependencies": {
     "@types/canvas-confetti": "^1.9.0",
