@@ -30,8 +30,22 @@ const MEDIA_EXTENSIONS = new Set([
 // Code files to scan for media references
 const CODE_EXTENSIONS = ['.ts', '.tsx', '.js', '.jsx', '.css', '.html', '.json'];
 
-// Directories to search code in
-const CODE_DIRS = ['src', 'index.html', 'tailwind.config.js', 'vite.config.ts'];
+// Code directories to automatically check if they exist
+const CANDIDATE_CODE_DIRS = [
+  'src',
+  'app',
+  'pages',
+  'components',
+  'lib',
+  'styles',
+  'index.html',
+  'tailwind.config.js',
+  'tailwind.config.ts',
+  'vite.config.ts',
+  'vite.config.js',
+  'next.config.js',
+  'next.config.mjs'
+];
 
 function formatBytes(bytes) {
   if (bytes === 0) return '0 B';
@@ -65,10 +79,12 @@ function getFilesRecursively(dir, filterFn) {
   return results;
 }
 
-// 1. Collect all codebase source files
+// 1. Collect all codebase source files from whatever folders exist in the project
 const codeFiles = [];
-for (const target of CODE_DIRS) {
+for (const target of CANDIDATE_CODE_DIRS) {
   const fullTarget = path.join(projectRoot, target);
+  if (!fs.existsSync(fullTarget)) continue;
+
   codeFiles.push(...getFilesRecursively(fullTarget, (filePath) => {
     const ext = path.extname(filePath).toLowerCase();
     return CODE_EXTENSIONS.includes(ext) || path.basename(filePath) === 'index.html';

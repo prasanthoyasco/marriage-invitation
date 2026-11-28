@@ -393,11 +393,10 @@ export const HeroSection: React.FC = () => {
                     setGalleryDirection(idx > currentGalleryIndex ? 1 : -1);
                     setCurrentGalleryIndex(idx);
                   }}
-                  className={`transition-all duration-300 rounded-full cursor-pointer ${
-                    currentGalleryIndex === idx
+                  className={`transition-all duration-300 rounded-full cursor-pointer ${currentGalleryIndex === idx
                       ? 'w-7 h-2 bg-gradient-to-r from-[#8C4A15] to-[#C68A4C] shadow-xs'
                       : 'w-2 h-2 bg-[#C68A4C]/45 hover:bg-[#C68A4C]'
-                  }`}
+                    }`}
                   aria-label={`Go to slide ${idx + 1}`}
                 />
               ))}
@@ -593,7 +592,7 @@ export const HeroSection: React.FC = () => {
               {/* ReactPlayer Container */}
               <div className="aspect-video w-full rounded-2xl overflow-hidden mt-4 bg-black shadow-inner relative flex items-center justify-center">
                 <ReactPlayer
-                  src="/assets/video/coupledance.mp4"
+                  src="/assets/video/coupledance_landscape.mp4"
                   playing={true}
                   controls={true}
                   width="100%"
